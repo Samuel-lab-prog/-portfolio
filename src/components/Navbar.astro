@@ -1,0 +1,23 @@
+---
+import Icon from "./Icon.astro";
+type NavItem = { label: string; href: string };
+type Props = {
+	brand: string;
+	items: NavItem[];
+};
+
+const { brand, items } = Astro.props as Props;
+---
+
+<nav class="navbar">
+	<div class="navbar-inner">
+		<a class="brand" href="/"><Icon name="sparkles" /> {brand}</a>
+		<div class="navbar-links">
+			{
+				items.map((item) => (
+					<a href={item.href}>{item.label}</a>
+				))
+			}
+		</div>
+	</div>
+</nav>

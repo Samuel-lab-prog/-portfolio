@@ -1,0 +1,247 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import Navbar from "../components/Navbar.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/Footer.astro";
+import { projects } from "../data/projects";
+import { myData } from "../data/myData";
+---
+
+<BaseLayout
+	title="Meu Portfolio"
+	description="Portfólio e porta de entrada para minhas habilidades"
+>
+	<Navbar brand="Samuel.dev" items={myData.navItems} />
+
+	<main class="page">
+		<HeroSection
+			eyebrow={myData.heroEyebrow}
+			name={myData.name}
+			description={myData.heroDescription}
+		/>
+
+		<ProjectsSection projects={projects} />
+
+		<section id="experiencia" class="block">
+			<SectionTitle label="Experiência" icon="briefcase" />
+			<div class="timeline">
+				{
+					myData.experience.map((item) => (
+						<article>
+							<h3>{item.title}</h3>
+							<p>{item.description}</p>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<section id="habilidades" class="block">
+			<SectionTitle label="Habilidades" icon="wrench" />
+			<ul>
+				{myData.skills.map((item) => <li>{item}</li>)}
+			</ul>
+		</section>
+
+		<section id="tecnologias" class="block">
+			<SectionTitle label="Tecnologias" icon="cpu" />
+			<ul>
+				{myData.technologies.map((item) => <li>{item}</li>)}
+			</ul>
+		</section>
+
+		<section id="idiomas" class="block">
+			<SectionTitle label="Idiomas" icon="globe" />
+			<ul>
+				{myData.languages.map((item) => <li>{item}</li>)}
+			</ul>
+		</section>
+
+		<ContactSection data={myData.contact} />
+	</main>
+	<Footer />
+</BaseLayout>
+
+<script>
+	// @ts-nocheck
+	function smoothScrollToHash(hash) {
+		const target = document.querySelector(hash);
+		const navbar = document.querySelector(".navbar");
+		if (!target) return;
+
+		const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+		const targetTop = target.getBoundingClientRect().top + window.scrollY;
+		const destination = Math.max(0, targetTop - navbarHeight - 18);
+
+		const start = window.scrollY;
+		const distance = destination - start;
+		const duration = 620;
+		const startTime = performance.now();
+
+		function easeInOutCubic(t) {
+			return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+		}
+
+		function step(currentTime) {
+			const elapsed = currentTime - startTime;
+			const progress = Math.min(1, elapsed / duration);
+			const eased = easeInOutCubic(progress);
+			window.scrollTo(0, start + distance * eased);
+			if (progress < 1) requestAnimationFrame(step);
+		}
+
+		requestAnimationFrame(step);
+	}
+
+	const hashLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
+	for (const link of hashLinks) {
+		link.addEventListener("click", (event) => {
+			const href = link.getAttribute("href");
+			if (!href || href === "#") return;
+			event.preventDefault();
+			smoothScrollToHash(href);
+			history.replaceState(null, "", href);
+		});
+	}
+
+	const filters = Array.from(document.querySelectorAll(".filter"));
+	const cards = Array.from(document.querySelectorAll("#projects-grid article"));
+
+	function applyFilter(filter) {
+		for (const card of cards) {
+			const categories = (card.dataset.categories ?? "")
+				.split(",")
+				.map((value) => value.trim())
+				.filter(Boolean);
+			const shouldShow = categories.includes(filter);
+			card.style.display = shouldShow ? "block" : "none";
+		}
+	}
+
+	for (const button of filters) {
+		button.addEventListener("click", () => {
+			for (const current of filters) current.classList.remove("is-active");
+			button.classList.add("is-active");
+			applyFilter(button.dataset.filter ?? "destaque");
+		});
+	}
+
+	const carousels = Array.from(document.querySelectorAll(".carousel"));
+	for (const carousel of carousels) {
+		const images = Array.from(carousel.querySelectorAll(".carousel-image"));
+		const prev = carousel.querySelector(".carousel-control.prev");
+		const next = carousel.querySelector(".carousel-control.next");
+
+		function render(index) {
+			for (const image of images) image.classList.remove("is-active");
+			if (images[index]) images[index].classList.add("is-active");
+			carousel.dataset.index = String(index);
+		}
+
+		prev?.addEventListener("click", () => {
+			const current = Number(carousel.dataset.index ?? "0");
+			const nextIndex = (current - 1 + images.length) % images.length;
+			render(nextIndex);
+		});
+
+		next?.addEventListener("click", () => {
+			const current = Number(carousel.dataset.index ?? "0");
+			const nextIndex = (current + 1) % images.length;
+			render(nextIndex);
+		});
+	}
+
+	applyFilter("destaque");
+
+	const lightbox = document.createElement("div");
+	lightbox.className = "lightbox";
+	lightbox.setAttribute("hidden", "");
+	lightbox.hidden = true;
+	lightbox.innerHTML = `
+		<div class="lightbox-backdrop"></div>
+		<div class="lightbox-content">
+			<button class="lightbox-close" type="button" aria-label="Fechar">×</button>
+			<button class="lightbox-nav prev" type="button" aria-label="Imagem anterior"><</button>
+			<img class="lightbox-image" alt="Imagem ampliada do projeto" />
+			<button class="lightbox-nav next" type="button" aria-label="Próxima imagem">></button>
+		</div>
+	`;
+	document.body.appendChild(lightbox);
+
+	const lightboxImage = lightbox.querySelector(".lightbox-image");
+	const closeButton = lightbox.querySelector(".lightbox-close");
+	const backdrop = lightbox.querySelector(".lightbox-backdrop");
+	const prevButton = lightbox.querySelector(".lightbox-nav.prev");
+	const nextButton = lightbox.querySelector(".lightbox-nav.next");
+	let activeImages = [];
+	let activeIndex = 0;
+
+	function renderLightbox() {
+		const current = activeImages[activeIndex];
+		if (!current || !lightboxImage) return;
+		const src = current.src || current.currentSrc || "";
+		if (!src) return;
+		lightboxImage.src = src;
+		lightboxImage.alt = current.alt || "Imagem ampliada do projeto";
+	}
+
+	function openLightbox(images, index) {
+		if (!images.length) return;
+		activeImages = images;
+		activeIndex = index;
+		renderLightbox();
+		lightbox.removeAttribute("hidden");
+		lightbox.hidden = false;
+		document.body.style.overflow = "hidden";
+	}
+
+	function closeLightbox() {
+		lightbox.setAttribute("hidden", "");
+		lightbox.hidden = true;
+		activeImages = [];
+		activeIndex = 0;
+		document.body.style.overflow = "";
+	}
+
+	prevButton?.addEventListener("click", () => {
+		if (!activeImages.length) return;
+		activeIndex = (activeIndex - 1 + activeImages.length) % activeImages.length;
+		renderLightbox();
+	});
+
+	nextButton?.addEventListener("click", () => {
+		if (!activeImages.length) return;
+		activeIndex = (activeIndex + 1) % activeImages.length;
+		renderLightbox();
+	});
+
+	closeButton?.addEventListener("click", closeLightbox);
+	backdrop?.addEventListener("click", closeLightbox);
+	lightboxImage?.addEventListener("click", closeLightbox);
+	document.addEventListener("keydown", (event) => {
+		if (lightbox.hidden) return;
+		if (event.key === "Escape") closeLightbox();
+		if (event.key === "ArrowLeft") prevButton?.click();
+		if (event.key === "ArrowRight") nextButton?.click();
+	});
+
+	const clickableImages = Array.from(document.querySelectorAll(".carousel-image"));
+	for (const image of clickableImages) {
+		image.addEventListener("click", () => {
+			const carousel = image.closest(".carousel");
+			if (!carousel) return;
+			const rawImages = Array.from(carousel.querySelectorAll(".carousel-image"));
+			const images = rawImages.map((img) => ({
+				src: img.getAttribute("src") || img.currentSrc || "",
+				alt: img.getAttribute("alt") || "",
+			}));
+			const index = rawImages.findIndex((item) => item === image);
+			openLightbox(images, index >= 0 ? index : 0);
+		});
+	}
+
+	closeLightbox();
+</script>

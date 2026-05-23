@@ -1,0 +1,14 @@
+---
+import Icon from "./Icon.astro";
+type Props = {
+	label: string;
+	icon?: "mail" | "beaker" | "briefcase" | "wrench" | "cpu" | "globe";
+};
+
+const { label, icon } = Astro.props as Props;
+---
+
+<h2 class="section-title">
+	{icon && <Icon name={icon} class="icon section-icon" />}
+	{label}
+</h2>

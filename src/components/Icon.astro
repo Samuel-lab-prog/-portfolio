@@ -1,0 +1,53 @@
+---
+type Props = {
+	name:
+		| "sparkles"
+		| "rocket"
+		| "briefcase"
+		| "beaker"
+		| "wrench"
+		| "cpu"
+		| "globe"
+		| "mail"
+		| "external"
+		| "github"
+		| "phone";
+	class?: string;
+};
+
+const { name, class: className = "icon" } = Astro.props as Props;
+---
+
+{
+	name === "sparkles" && <svg class={className} viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "rocket" && <svg class={className} viewBox="0 0 24 24" fill="none"><path d="M5 14l5-5c2-2 4-3 8-3-1 4-2 6-4 8l-5 5-4 1 1-4z" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "briefcase" && <svg class={className} viewBox="0 0 24 24" fill="none"><path d="M4 8h16v10H4zM9 8V6h6v2" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "beaker" && <svg class={className} viewBox="0 0 24 24" fill="none"><path d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "wrench" && <svg class={className} viewBox="0 0 24 24" fill="none"><path d="M14 7a4 4 0 1 0 3 3l-7 7a2 2 0 1 1-3-3l7-7z" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "cpu" && <svg class={className} viewBox="0 0 24 24" fill="none"><rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "globe" && <svg class={className} viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "mail" && <svg class={className} viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "external" && <svg class={className} viewBox="0 0 24 24" fill="none"><path d="M14 4h6v6M10 14l10-10M20 14v6H4V4h6" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "github" && <svg class={className} viewBox="0 0 24 24" fill="none"><path d="M9 18c-4 1-4-2-6-2m12 4v-3a3.3 3.3 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0 0 19 4.1 4.8 4.8 0 0 0 18.9 1S17.8.7 15 2.6a13.4 13.4 0 0 0-6 0C6.2.7 5.1 1 5.1 1A4.8 4.8 0 0 0 5 4.1a5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.2 6.4 6.2 6.7A3.3 3.3 0 0 0 9 17v3" stroke="currentColor" stroke-width="1.8"/></svg>
+}
+{
+	name === "phone" && <svg class={className} viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7.8 9.6a16 16 0 0 0 6.6 6.6l1.1-1.1a2 2 0 0 1 1.8-.6l3 .5A2 2 0 0 1 22 16.9z" stroke="currentColor" stroke-width="1.8"/></svg>
+}

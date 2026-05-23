@@ -1,0 +1,31 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+import Icon from "./Icon.astro";
+import type { MyData } from "../data/myData";
+
+type Props = {
+	data: MyData["contact"];
+};
+
+const { data } = Astro.props as Props;
+---
+
+<section id="contato" class="block">
+	<SectionTitle label="Contato" icon="mail" />
+	<p>{data.intro}</p>
+	<p><strong><Icon name="mail" /> Email:</strong> {data.email}</p>
+	<p><strong><Icon name="phone" /> Telefone:</strong> {data.phone}</p>
+	<div class="contact-links">
+		{
+			data.links.map((link) => (
+				<a
+					href={link.href}
+					target={link.external ? "_blank" : undefined}
+					rel={link.external ? "noreferrer" : undefined}
+				>
+					{link.label}
+				</a>
+			))
+		}
+	</div>
+</section>

@@ -1,0 +1,24 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+import ProjectCard from "./ProjectCard.astro";
+import type { PortfolioProject } from "../data/projects";
+
+type Props = {
+	projects: PortfolioProject[];
+};
+
+const { projects } = Astro.props as Props;
+---
+
+<section id="projetos" class="block">
+	<SectionTitle label="Projetos em destaque" icon="beaker" />
+	<div class="project-filters" role="tablist" aria-label="Filtrar projetos">
+		<button class="filter is-active" data-filter="destaque" type="button">Destaque</button>
+		<button class="filter" data-filter="frontend" type="button">Frontend</button>
+		<button class="filter" data-filter="backend" type="button">Backend</button>
+		<button class="filter" data-filter="fullstack" type="button">Fullstack</button>
+	</div>
+	<div class="grid" id="projects-grid">
+		{projects.map((project) => <ProjectCard project={project} />)}
+	</div>
+</section>

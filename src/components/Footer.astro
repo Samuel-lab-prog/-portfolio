@@ -1,0 +1,26 @@
+---
+import Icon from "./Icon.astro";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="site-footer-inner">
+		<p class="footer-title">Samuel Gomes Monni</p>
+		<p class="footer-subtitle">Desenvolvedor Fullstack • Arquitetura • Qualidade de Software</p>
+		<div class="site-footer-icons">
+			<a href="mailto:sg1976387@gmail.com" aria-label="Enviar e-mail">
+				<Icon name="mail" />
+			</a>
+			<a href="https://wa.me/5551991669896" target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp">
+				<Icon name="phone" />
+			</a>
+			<a href="https://github.com/Samuel-lab-prog" target="_blank" rel="noreferrer" aria-label="Abrir GitHub">
+				<Icon name="github" />
+			</a>
+			<a href="#projetos" aria-label="Ir para projetos">
+				<Icon name="beaker" />
+			</a>
+		</div>
+		<p class="footer-copy">© {year} Todos os direitos reservados.</p>
+	</div>
+</footer>
