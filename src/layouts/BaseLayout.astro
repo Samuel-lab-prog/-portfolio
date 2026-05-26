@@ -1,12 +1,37 @@
----
+﻿---
 import "../styles/global.css";
 
 type Props = {
 	title: string;
 	description?: string;
+	keywords?: string[];
+	ogImage?: string;
+	canonicalPath?: string;
+	structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+	noindex?: boolean;
 };
 
-const { title, description = "Portfolio pessoal" } = Astro.props as Props;
+const {
+	title,
+	description = "Portfólio pessoal",
+	keywords = [],
+	ogImage = "/projects/hellopoetry/print-1.svg",
+	canonicalPath,
+	structuredData,
+	noindex = false,
+} = Astro.props as Props;
+
+const siteUrl = Astro.site;
+const pagePath = canonicalPath ?? Astro.url.pathname;
+const canonicalUrl = siteUrl ? new URL(pagePath, siteUrl).toString() : Astro.url.toString();
+const ogImageUrl = siteUrl ? new URL(ogImage, siteUrl).toString() : ogImage;
+const robotsContent = noindex
+	? "noindex, nofollow"
+	: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+const keywordContent = keywords.length > 0 ? keywords.join(", ") : undefined;
+const jsonLd = structuredData
+	? JSON.stringify(Array.isArray(structuredData) ? structuredData : [structuredData])
+	: undefined;
 ---
 
 <!doctype html>
@@ -15,6 +40,28 @@ const { title, description = "Portfolio pessoal" } = Astro.props as Props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
+		<meta name="author" content="Samuel Gomes Monni" />
+		<meta name="robots" content={robotsContent} />
+		<meta name="googlebot" content={robotsContent} />
+		<meta name="theme-color" content="#0f172a" />
+		{keywordContent && <meta name="keywords" content={keywordContent} />}
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="alternate" hrefLang="pt-BR" href={canonicalUrl} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="pt_BR" />
+		<meta property="og:site_name" content="Samuel.dev" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={ogImageUrl} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl} />
+
+		{jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
 		<title>{title}</title>
 	</head>
 	<body>

@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import Navbar from "../components/Navbar.astro";
@@ -8,11 +8,58 @@ import ContactSection from "../components/ContactSection.astro";
 import Footer from "../components/Footer.astro";
 import { projects } from "../data/projects";
 import { myData } from "../data/myData";
+
+const baseUrl = Astro.site ?? new URL("https://samuel.dev");
+const pageUrl = new URL("/", baseUrl).toString();
+
+const structuredData = [
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		name: myData.name,
+		jobTitle: "Desenvolvedor Fullstack",
+		url: pageUrl,
+		email: `mailto:${myData.contact.email}`,
+		telephone: myData.contact.phone,
+		sameAs: ["https://github.com/Samuel-lab-prog", "https://wa.me/5551991669896"],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		name: "Samuel.dev",
+		url: pageUrl,
+		inLanguage: "pt-BR",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		name: "Projetos de portfólio",
+		itemListElement: projects.map((project, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			name: project.name,
+			url: project.visitUrl,
+			description: project.description,
+		})),
+	},
+];
 ---
 
 <BaseLayout
-	title="Meu Portfolio"
+	title="Meu Portfólio"
 	description="Portfólio e porta de entrada para minhas habilidades"
+	keywords={[
+		"desenvolvedor fullstack",
+		"portfolio desenvolvedor",
+		"react",
+		"typescript",
+		"astro",
+		"ddd",
+		"cqrs",
+	]}
+	ogImage="/projects/hellopoetry/print-1.svg"
+	canonicalPath="/"
+	structuredData={structuredData}
 >
 	<Navbar brand="Samuel.dev" items={myData.navItems} />
 

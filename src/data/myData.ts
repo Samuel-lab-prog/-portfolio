@@ -1,4 +1,4 @@
-export type ExperienceItem = {
+﻿export type ExperienceItem = {
 	title: string;
 	description: string;
 };
@@ -43,10 +43,10 @@ export const myData: MyData = {
 		{ label: "Contato", href: "#contato" },
 	],
 	skills: [
-		"Arquitetura de software: DDD, CQRS, Ports and Adapters",
-		"Frontend: React, TypeScript, Vite, React Query, Chakra UI",
-		"Backend: Bun, Elysia, Prisma, PostgreSQL, S3",
-		"Qualidade: testes, lint, typecheck e métricas arquiteturais",
+		"Arquitetura de software: DDD, CQRS, Ports and Adapters, Event Sourcing, Event-Driven Architecture",
+		"Frontend: React, TypeScript, Vite, React Query, Chakra UI, HTML, CSS, Sass/SCSS, TailwindCSS, Next.js",
+		"Backend: Bun, Elysia, Prisma, PostgreSQL, S3, Java, Node.js, Express, JavaScript, TypeScript",
+		"Qualidade: testes, lint, typecheck e métricas arquiteturais, automação de pipelines CI/CD e monitoramento",
 	],
 	experience: [
 		{
@@ -55,21 +55,21 @@ export const myData: MyData = {
 				"Atuação em projetos sob demanda com foco em aplicações web fullstack, arquitetura escalável e qualidade de código em produção.",
 		},
 		{
-			title: "IFRS Osorio - Bolsista (2024)",
+			title: "IFRS Osório - Bolsista (2024)",
 			description:
-				"Atuei em projeto de extensão focado no preparo para OBMEP, ensinando estudantes e estimulando pensamento matemático crítico.",
+				"Coordenei um projeto de extensão para a criação de um grupo de estudos para a Olimpíada Brasileira de Matemática das Escolas Públicas (OBMEP). Criei materiais de estudo e administrei aulas para os discentes, melhorando o desempenho dos participantes na competição.",
 		},
 		{
-			title: "IFRS Osorio - Bolsista (2025)",
+			title: "IFRS Osório - Bolsista (2025)",
 			description:
-				"Preparei estudantes para a OBI com ensino de lógica de programação, estruturas de dados e algoritmos. Também criei e ministrei curso de Git e GitHub.",
+				"Coordenei um projeto de ensino para criar um grupo de estudos para a Olimpíada Brasileira de Informática (OBI). Desenvolvi materiais didáticos e conduzi aulas para os estudantes, resultando em melhora significativa no desempenho dos participantes na competição. Além disso, criei e ministrei um curso de Git e GitHub para os alunos, capacitando-os a utilizar essas ferramentas essenciais para o desenvolvimento de software e colaboração em projetos de programação.",
 		},
 	],
 	technologies: [
-		"Front-end: React, HTML, CSS, JavaScript, TypeScript, Sass/SCSS, TailwindCSS",
-		"Back-end: Node.js, Express, Elysia, Bun, Java",
+		"Front-end: React, HTML, CSS, JavaScript, TypeScript, Sass/SCSS, TailwindCSS, Next.js, Vite",
+		"Back-end: Node.js, Express, Elysia, Bun, Java, JavaScript, TypeScript",
 		"Banco de dados: SQL, PostgreSQL, Prisma",
-		"Ferramentas: Git, GitHub, Figma, Vite, UX, Office, Excel, Canva",
+		"Ferramentas: Git, GitHub, Figma, Vite, UX, Office, Excel, Canva, PowerPoint",
 	],
 	languages: [
 		"Português: fluente (língua materna)",
@@ -77,11 +77,15 @@ export const myData: MyData = {
 	],
 	contact: {
 		intro: "Fale comigo por qualquer canal abaixo:",
-		email: "sg1976387@gmail.com",
+		email: "samuel.gomes.5762@gmail.com",
 		phone: "(51) 99166-9896",
 		links: [
-			{ label: "Enviar e-mail", href: "mailto:sg1976387@gmail.com" },
-			{ label: "Abrir WhatsApp", href: "https://wa.me/5551991669896", external: true },
+			{ label: "Enviar e-mail", href: "mailto:samuel.gomes.5762@gmail.com" },
+			{
+				label: "Abrir WhatsApp",
+				href: "https://wa.me/5551991669896?text=Ol%C3%A1%2C%20Samuel!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar.",
+				external: true,
+			},
 			{ label: "Ver GitHub", href: "https://github.com/Samuel-lab-prog", external: true },
 		],
 	},

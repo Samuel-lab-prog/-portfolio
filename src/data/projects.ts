@@ -1,4 +1,4 @@
-export type ProjectCategory = "destaque" | "frontend" | "backend" | "fullstack";
+﻿export type ProjectCategory = "destaque" | "frontend" | "backend" | "fullstack";
 
 export type PortfolioProject = {
 	id: string;
@@ -16,7 +16,7 @@ export const projects: PortfolioProject[] = [
 		id: "hellopoetry-fullstack",
 		name: "HelloPoetry",
 		description:
-			"Rede social para poetas com frontend em React e backend com DDD/CQRS, incluindo publicacao de poemas, interacoes sociais e moderacao.",
+			"Plataforma completa para poetas publicarem, interagirem e crescerem em comunidade, com foco em experiência fluida no frontend e arquitetura robusta no backend para suportar evolução contínua do produto.",
 		categories: ["destaque", "fullstack"],
 		keywords: ["429 testes", "50k linhas", "DDD", "CQRS"],
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
@@ -31,7 +31,7 @@ export const projects: PortfolioProject[] = [
 		id: "hellopoetry-frontend",
 		name: "helloPoetryFrontend",
 		description:
-			"Frontend da rede social HelloPoetry com React, TypeScript e arquitetura por features.",
+			"Interface da rede social pensada para aumentar engajamento e retenção, com navegação clara, feedback rápido e arquitetura por features que acelera entregas e facilita manutenção.",
 		categories: ["frontend"],
 		keywords: ["React 19", "TypeScript", "Vite", "Chakra UI"],
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
@@ -46,7 +46,7 @@ export const projects: PortfolioProject[] = [
 		id: "hellopoetry-backend",
 		name: "helloPoetryBackend",
 		description:
-			"Backend do HelloPoetry com DDD, CQRS, Elysia, Prisma e regras arquiteturais automatizadas.",
+			"API projetada para escalar regras de negócio com segurança, separando responsabilidades com DDD/CQRS e reduzindo regressões por meio de validações arquiteturais automatizadas.",
 		categories: ["backend"],
 		keywords: ["DDD", "CQRS", "Prisma", "Bun"],
 		visitUrl: "https://hellopoetrybackend.onrender.com/api/v1/docs",
@@ -70,7 +70,7 @@ export const projects: PortfolioProject[] = [
 		id: "blog-frontend",
 		name: "blogFrontend",
 		description:
-			"Interface do blog focada em leitura, navegacao por posts e experiencia de escrita limpa.",
+			"Frontend de blog otimizado para leitura e descoberta de conteúdo, melhorando a experiência do usuário com navegação simples, layout responsivo e foco em legibilidade.",
 		categories: ["frontend"],
 		keywords: ["React", "UX", "Responsivo"],
 		visitUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
@@ -85,7 +85,7 @@ export const projects: PortfolioProject[] = [
 		id: "blog-backend",
 		name: "blogBackend",
 		description:
-			"API do blog com TypeScript e camada de dados estruturada para evolucao e manutencao.",
+			"Backend de blog organizado para facilitar crescimento do sistema, com estrutura de dados clara que simplifica manutenção, acelera novas funcionalidades e aumenta confiabilidade da API.",
 		categories: ["backend"],
 		keywords: ["Node.js", "TypeScript", "API REST"],
 		visitUrl: "https://github.com/Samuel-lab-prog/blogBackend",
@@ -100,9 +100,9 @@ export const projects: PortfolioProject[] = [
 		id: "croma",
 		name: "croma",
 		description:
-			"Projeto em Astro com foco em experiencia visual, estrutura limpa e entrega estatica.",
+			"Site em Astro com foco em performance e apresentação visual, entregando carregamento rápido e experiência consistente para destacar conteúdo e identidade do projeto.",
 		categories: ["frontend"],
-		keywords: ["Astro", "UI", "Est�tico"],
+		keywords: ["Astro", "UI", "Estático"],
 		visitUrl: "https://github.com/Samuel-lab-prog/croma",
 		githubUrl: "https://github.com/Samuel-lab-prog/croma",
 		prints: [
