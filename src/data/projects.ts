@@ -22,9 +22,42 @@ export const projects: PortfolioProject[] = [
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryFrontend",
 		prints: [
-			{ src: "/projects/hellopoetry/print-1.svg", alt: "Print 1 do HelloPoetry" },
-			{ src: "/projects/hellopoetry/print-2.svg", alt: "Print 2 do HelloPoetry" },
-			{ src: "/projects/hellopoetry/print-3.svg", alt: "Print 3 do HelloPoetry" },
+			{
+				src: "/projects/hellopoetry/hellopoetry-create-poem.png",
+				alt: "Tela de criação de poema no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-profile.png",
+				alt: "Tela de perfil no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-poem-detail.png",
+				alt: "Tela de leitura de poema no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-poem-love.png",
+				alt: "Tela do poema O amor nunca morre no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-poems-list.png",
+				alt: "Tela de listagem e busca de poemas no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-comments.png",
+				alt: "Seção de comentários no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-author-profile.png",
+				alt: "Perfil de autora no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-create-preview.png",
+				alt: "Pré-visualização de poema na tela de criação do HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-moderation-pending.png",
+				alt: "Lista de poemas pendentes na moderação do HelloPoetry",
+			},
 		],
 	},
 	{
@@ -37,9 +70,42 @@ export const projects: PortfolioProject[] = [
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryFrontend",
 		prints: [
-			{ src: "/projects/hellopoetry/print-1.svg", alt: "Print 1 do helloPoetryFrontend" },
-			{ src: "/projects/hellopoetry/print-2.svg", alt: "Print 2 do helloPoetryFrontend" },
-			{ src: "/projects/hellopoetry/print-3.svg", alt: "Print 3 do helloPoetryFrontend" },
+			{
+				src: "/projects/hellopoetry/hellopoetry-create-poem.png",
+				alt: "Tela de criação de poema no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-profile.png",
+				alt: "Tela de perfil no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-poem-detail.png",
+				alt: "Tela de leitura de poema no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-poem-love.png",
+				alt: "Tela do poema O amor nunca morre no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-poems-list.png",
+				alt: "Tela de listagem e busca de poemas no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-comments.png",
+				alt: "Seção de comentários no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-author-profile.png",
+				alt: "Perfil de autora no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-create-preview.png",
+				alt: "Pré-visualização de poema na tela de criação do HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-moderation-pending.png",
+				alt: "Lista de poemas pendentes na moderação do HelloPoetry",
+			},
 		],
 	},
 	{
@@ -53,16 +119,64 @@ export const projects: PortfolioProject[] = [
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryBackend",
 		prints: [
 			{
-				src: "/projects/hellopoetry-backend/print-1.svg",
-				alt: "Print 1 do helloPoetryBackend",
+				src: "/projects/hellopoetry/hellopoetry-create-poem.png",
+				alt: "Tela de criação de poema no HelloPoetry",
 			},
 			{
-				src: "/projects/hellopoetry-backend/print-2.svg",
-				alt: "Print 2 do helloPoetryBackend",
+				src: "/projects/hellopoetry/hellopoetry-profile.png",
+				alt: "Tela de perfil no HelloPoetry",
 			},
 			{
-				src: "/projects/hellopoetry-backend/print-3.svg",
-				alt: "Print 3 do helloPoetryBackend",
+				src: "/projects/hellopoetry/hellopoetry-poem-detail.png",
+				alt: "Tela de leitura de poema no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-poem-love.png",
+				alt: "Tela do poema O amor nunca morre no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-poems-list.png",
+				alt: "Tela de listagem e busca de poemas no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-comments.png",
+				alt: "Seção de comentários no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-author-profile.png",
+				alt: "Perfil de autora no HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-create-preview.png",
+				alt: "Pré-visualização de poema na tela de criação do HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-moderation-pending.png",
+				alt: "Lista de poemas pendentes na moderação do HelloPoetry",
+			},
+		],
+	},
+	{
+		id: "blog-fullstack",
+		name: "blog",
+		description:
+			"Projeto completo de blog com experiência de leitura no frontend e estrutura de API no backend, pensado para facilitar publicação de conteúdo, manutenção e evolução contínua.",
+		categories: ["destaque", "fullstack"],
+		keywords: ["Fullstack", "React", "Node.js", "API REST"],
+		visitUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
+		githubUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
+		prints: [
+			{
+				src: "/projects/blog/blog-home-ptbr.png",
+				alt: "Página inicial do blog em português com listagem dos últimos posts",
+			},
+			{
+				src: "/projects/blog/blog-post-detalhe.png",
+				alt: "Página de leitura completa de um post do blog",
+			},
+			{
+				src: "/projects/blog/blog-post-ninguem-vai-te-completar.png",
+				alt: "Página do post Ninguém vai te completar no blog",
 			},
 		],
 	},
@@ -76,9 +190,18 @@ export const projects: PortfolioProject[] = [
 		visitUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
 		githubUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
 		prints: [
-			{ src: "/projects/blog/print-1.svg", alt: "Print 1 do blogFrontend" },
-			{ src: "/projects/blog/print-2.svg", alt: "Print 2 do blogFrontend" },
-			{ src: "/projects/blog/print-3.svg", alt: "Print 3 do blogFrontend" },
+			{
+				src: "/projects/blog/blog-home-ptbr.png",
+				alt: "Página inicial do blog em português com listagem dos últimos posts",
+			},
+			{
+				src: "/projects/blog/blog-post-detalhe.png",
+				alt: "Página de leitura completa de um post do blog",
+			},
+			{
+				src: "/projects/blog/blog-post-ninguem-vai-te-completar.png",
+				alt: "Página do post Ninguém vai te completar no blog",
+			},
 		],
 	},
 	{
@@ -91,9 +214,18 @@ export const projects: PortfolioProject[] = [
 		visitUrl: "https://github.com/Samuel-lab-prog/blogBackend",
 		githubUrl: "https://github.com/Samuel-lab-prog/blogBackend",
 		prints: [
-			{ src: "/projects/blog-backend/print-1.svg", alt: "Print 1 do blogBackend" },
-			{ src: "/projects/blog-backend/print-2.svg", alt: "Print 2 do blogBackend" },
-			{ src: "/projects/blog-backend/print-3.svg", alt: "Print 3 do blogBackend" },
+			{
+				src: "/projects/blog/blog-home-ptbr.png",
+				alt: "Página inicial do blog em português com listagem dos últimos posts",
+			},
+			{
+				src: "/projects/blog/blog-post-detalhe.png",
+				alt: "Página de leitura completa de um post do blog",
+			},
+			{
+				src: "/projects/blog/blog-post-ninguem-vai-te-completar.png",
+				alt: "Página do post Ninguém vai te completar no blog",
+			},
 		],
 	},
 	{
