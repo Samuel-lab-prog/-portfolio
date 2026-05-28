@@ -26,7 +26,7 @@ const structuredData = [
 	{
 		"@context": "https://schema.org",
 		"@type": "WebSite",
-		name: "Samuel.dev",
+		name: "samuel.dev",
 		url: pageUrl,
 		inLanguage: "pt-BR",
 	},
@@ -46,7 +46,7 @@ const structuredData = [
 ---
 
 <BaseLayout
-	title="Meu Portfólio"
+	title="samuel.dev"
 	description="Portfólio e porta de entrada para minhas habilidades"
 	keywords={[
 		"desenvolvedor fullstack",
@@ -61,7 +61,7 @@ const structuredData = [
 	canonicalPath="/"
 	structuredData={structuredData}
 >
-	<Navbar brand="Samuel.dev" items={myData.navItems} />
+	<Navbar brand="samuel.dev" items={myData.navItems} />
 
 	<main class="page">
 		<HeroSection
@@ -143,7 +143,22 @@ const structuredData = [
 		requestAnimationFrame(step);
 	}
 
-	const hashLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
+		const navbar = document.querySelector("[data-navbar]");
+	const navbarToggle = document.querySelector("[data-navbar-toggle]");
+	const navbarLinks = Array.from(document.querySelectorAll("[data-navbar-links] a"));
+
+	navbarToggle?.addEventListener("click", () => {
+		const isOpen = navbar?.classList.toggle("is-open");
+		navbarToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+	});
+
+	for (const link of navbarLinks) {
+		link.addEventListener("click", () => {
+			navbar?.classList.remove("is-open");
+			navbarToggle?.setAttribute("aria-expanded", "false");
+		});
+	}
+const hashLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
 	for (const link of hashLinks) {
 		link.addEventListener("click", (event) => {
 			const href = link.getAttribute("href");
@@ -225,6 +240,8 @@ const structuredData = [
 	const nextButton = lightbox.querySelector(".lightbox-nav.next");
 	let activeImages = [];
 	let activeIndex = 0;
+	let touchStartX = 0;
+	let touchStartY = 0;
 
 	function renderLightbox() {
 		const current = activeImages[activeIndex];
@@ -265,6 +282,33 @@ const structuredData = [
 		renderLightbox();
 	});
 
+	lightbox.addEventListener(
+		"touchstart",
+		(event) => {
+			const touch = event.changedTouches?.[0];
+			if (!touch) return;
+			touchStartX = touch.clientX;
+			touchStartY = touch.clientY;
+		},
+		{ passive: true },
+	);
+
+	lightbox.addEventListener(
+		"touchend",
+		(event) => {
+			if (!activeImages.length) return;
+			const touch = event.changedTouches?.[0];
+			if (!touch) return;
+			const deltaX = touch.clientX - touchStartX;
+			const deltaY = touch.clientY - touchStartY;
+			const minSwipe = 40;
+			if (Math.abs(deltaX) < minSwipe || Math.abs(deltaX) < Math.abs(deltaY)) return;
+			if (deltaX > 0) prevButton?.click();
+			if (deltaX < 0) nextButton?.click();
+		},
+		{ passive: true },
+	);
+
 	closeButton?.addEventListener("click", closeLightbox);
 	backdrop?.addEventListener("click", closeLightbox);
 	lightboxImage?.addEventListener("click", closeLightbox);
@@ -292,3 +336,4 @@ const structuredData = [
 
 	closeLightbox();
 </script>
+

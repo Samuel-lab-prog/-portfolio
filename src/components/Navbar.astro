@@ -1,4 +1,4 @@
----
+﻿---
 import Icon from "./Icon.astro";
 type NavItem = { label: string; href: string };
 type Props = {
@@ -9,10 +9,21 @@ type Props = {
 const { brand, items } = Astro.props as Props;
 ---
 
-<nav class="navbar">
+<nav class="navbar" data-navbar>
 	<div class="navbar-inner">
 		<a class="brand" href="/"><Icon name="sparkles" /> {brand}</a>
-		<div class="navbar-links">
+		<button
+			class="navbar-toggle"
+			type="button"
+			aria-label="Abrir menu"
+			aria-expanded="false"
+			data-navbar-toggle
+		>
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+		<div class="navbar-links" data-navbar-links>
 			{
 				items.map((item) => (
 					<a href={item.href}>{item.label}</a>

@@ -1,4 +1,4 @@
-:root {
+﻿:root {
 	--bg: #0d1117;
 	--surface: #161b22;
 	--text: #e6edf3;
@@ -29,6 +29,7 @@ body {
 }
 
 .navbar-inner {
+	position: relative;
 	max-width: 1040px;
 	margin: 0 auto;
 	padding: 20px 20px;
@@ -68,10 +69,38 @@ body {
 	color: var(--muted);
 	font-weight: 600;
 	font-size: 1rem;
+	transition:
+		color 0.2s ease,
+		text-shadow 0.2s ease;
 }
 
 .navbar-links a:hover {
+	color: #38e8ff;
+	text-shadow: 0 0 14px rgba(56, 232, 255, 0.35);
+}
+
+.navbar-toggle {
+	display: none;
+	width: 40px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid var(--border);
+	background: #0f141b;
 	color: var(--text);
+	padding: 8px;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	flex-direction: column;
+}
+
+.navbar-toggle span {
+	display: block;
+	width: 18px;
+	height: 2px;
+	background: currentColor;
+	border-radius: 999px;
 }
 
 .page {
@@ -410,6 +439,34 @@ li {
 	cursor: pointer;
 }
 
+@media (max-width: 860px) {
+	.lightbox-content {
+		width: 98vw;
+		height: 90vh;
+		gap: 6px;
+	}
+
+	.lightbox-image {
+		border-radius: 8px;
+	}
+
+	.lightbox-nav {
+		width: 34px;
+		height: 34px;
+	}
+
+	/* Use swipe on mobile; hide arrow buttons to maximize image area */
+	.lightbox-nav {
+		display: none;
+	}
+
+	.lightbox-close {
+		top: 6px;
+		right: 6px;
+		padding: 6px 10px;
+	}
+}
+
 @keyframes pop-in {
 	from {
 		transform: scale(0.97);
@@ -518,5 +575,124 @@ li {
 @media (max-width: 860px) {
 	.grid {
 		grid-template-columns: 1fr;
+	}
+
+	.carousel {
+		position: relative;
+		display: block;
+	}
+
+	.carousel-stage {
+		height: min(56vw, 260px);
+	}
+
+	.carousel-control {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 2;
+		width: 32px;
+		height: 32px;
+		background: rgba(11, 17, 24, 0.88);
+	}
+
+	.carousel-control.prev {
+		left: 6px;
+	}
+
+	.carousel-control.next {
+		right: 6px;
+	}
+}
+
+@media (max-width: 860px) {
+	.navbar-toggle {
+		display: inline-flex;
+	}
+
+	.navbar-links {
+		display: flex;
+		flex-wrap: nowrap;
+		flex-direction: column;
+		align-items: stretch;
+		position: absolute;
+		top: calc(100% + 8px);
+		right: 10px;
+		left: 10px;
+		background: #0f141b;
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		padding: 10px;
+		gap: 10px;
+		flex-direction: column;
+		z-index: 30;
+		opacity: 0;
+		transform: translateY(-8px);
+		max-height: 0;
+		overflow: hidden;
+		pointer-events: none;
+		visibility: hidden;
+		transition:
+			opacity 0.22s ease,
+			transform 0.22s ease,
+			max-height 0.22s ease,
+			visibility 0s linear 0.22s;
+	}
+
+	.navbar.is-open .navbar-links {
+		opacity: 1;
+		transform: translateY(0);
+		max-height: 280px;
+		pointer-events: auto;
+		visibility: visible;
+		transition:
+			opacity 0.22s ease,
+			transform 0.22s ease,
+			max-height 0.22s ease,
+			visibility 0s linear 0s;
+	}
+
+	.navbar-links a {
+		display: block;
+		width: 100%;
+		padding: 8px 6px;
+	}
+
+	.navbar-inner {
+		position: relative;
+		padding: 14px 12px;
+		min-height: 72px;
+	}
+
+	.page {
+		padding: 20px 10px 64px;
+	}
+
+	.block {
+		padding: 14px;
+		margin-top: 36px;
+	}
+
+	/* Reduce the "card inside card" feeling in projects on mobile */
+	#projetos.block {
+		background: transparent;
+		border: 0;
+		padding: 0;
+	}
+
+	.grid article {
+		padding: 12px;
+		border-radius: 10px;
+	}
+
+	.project-links a,
+	.project-links button {
+		padding: 8px 10px;
+		font-size: 0.85rem;
+	}
+
+	.carousel-stage {
+		height: min(58vw, 220px);
+		border-radius: 8px;
 	}
 }
