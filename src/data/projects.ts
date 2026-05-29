@@ -163,7 +163,7 @@ export const projects: PortfolioProject[] = [
 			"Projeto completo de blog com experiência de leitura no frontend e estrutura de API no backend, pensado para facilitar publicação de conteúdo, manutenção e evolução contínua.",
 		categories: ["destaque", "fullstack"],
 		keywords: ["Fullstack", "React", "Node.js", "API REST"],
-		visitUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
+		visitUrl: "https://samuelsblog.xyz/",
 		githubUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
 		prints: [
 			{
@@ -187,7 +187,7 @@ export const projects: PortfolioProject[] = [
 			"Frontend de blog otimizado para leitura e descoberta de conteúdo, melhorando a experiência do usuário com navegação simples, layout responsivo e foco em legibilidade.",
 		categories: ["frontend"],
 		keywords: ["React", "UX", "Responsivo"],
-		visitUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
+		visitUrl: "https://samuelsblog.xyz/",
 		githubUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
 		prints: [
 			{

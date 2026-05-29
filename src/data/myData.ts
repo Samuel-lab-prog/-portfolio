@@ -44,8 +44,9 @@ export const myData: MyData = {
 	],
 	skills: [
 		"Arquitetura de software: DDD, CQRS, Ports and Adapters, Event Sourcing, Event-Driven Architecture",
-		"Frontend: React, TypeScript, Vite, React Query, Chakra UI, HTML, CSS, Sass/SCSS, TailwindCSS, Next.js",
-		"Backend: Bun, Elysia, Prisma, PostgreSQL, S3, Java, Node.js, Express, JavaScript, TypeScript",
+		"Modelagem de domínio e regras de negócio com foco em escalabilidade e manutenção",
+		"Resolução de problemas complexos e tomada de decisão técnica orientada a contexto",
+		"Comunicação clara e colaboração em equipe para alinhar decisões técnicas com objetivos do projeto",
 		"Qualidade: testes, lint, typecheck e métricas arquiteturais, automação de pipelines CI/CD e monitoramento",
 	],
 	experience: [
