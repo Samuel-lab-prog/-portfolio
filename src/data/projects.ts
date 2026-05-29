@@ -8,6 +8,7 @@ export type PortfolioProject = {
 	keywords: string[];
 	visitUrl: string;
 	githubUrl: string;
+	isAvailable: boolean;
 	prints: { src: string; alt: string }[];
 };
 
@@ -21,6 +22,7 @@ export const projects: PortfolioProject[] = [
 		keywords: ["429 testes", "50k linhas", "DDD", "CQRS"],
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryFrontend",
+		isAvailable: false,
 		prints: [
 			{
 				src: "/projects/hellopoetry/hellopoetry-create-poem.png",
@@ -57,6 +59,10 @@ export const projects: PortfolioProject[] = [
 			{
 				src: "/projects/hellopoetry/hellopoetry-moderation-pending.png",
 				alt: "Lista de poemas pendentes na moderação do HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-moderation-card.png",
+				alt: "Card de aprovação na moderação de poemas do HelloPoetry",
 			},
 		],
 	},
@@ -69,6 +75,7 @@ export const projects: PortfolioProject[] = [
 		keywords: ["React 19", "TypeScript", "Vite", "Chakra UI"],
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryFrontend",
+		isAvailable: true,
 		prints: [
 			{
 				src: "/projects/hellopoetry/hellopoetry-create-poem.png",
@@ -105,6 +112,10 @@ export const projects: PortfolioProject[] = [
 			{
 				src: "/projects/hellopoetry/hellopoetry-moderation-pending.png",
 				alt: "Lista de poemas pendentes na moderação do HelloPoetry",
+			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-moderation-card.png",
+				alt: "Card de aprovação na moderação de poemas do HelloPoetry",
 			},
 		],
 	},
@@ -117,6 +128,7 @@ export const projects: PortfolioProject[] = [
 		keywords: ["DDD", "CQRS", "Prisma", "Bun"],
 		visitUrl: "https://hellopoetrybackend.onrender.com/api/v1/docs",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryBackend",
+		isAvailable: false,
 		prints: [
 			{
 				src: "/projects/hellopoetry/hellopoetry-create-poem.png",
@@ -154,6 +166,10 @@ export const projects: PortfolioProject[] = [
 				src: "/projects/hellopoetry/hellopoetry-moderation-pending.png",
 				alt: "Lista de poemas pendentes na moderação do HelloPoetry",
 			},
+			{
+				src: "/projects/hellopoetry/hellopoetry-moderation-card.png",
+				alt: "Card de aprovação na moderação de poemas do HelloPoetry",
+			},
 		],
 	},
 	{
@@ -165,6 +181,7 @@ export const projects: PortfolioProject[] = [
 		keywords: ["Fullstack", "React", "Node.js", "API REST"],
 		visitUrl: "https://samuelsblog.xyz/",
 		githubUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
+		isAvailable: false,
 		prints: [
 			{
 				src: "/projects/blog/blog-home-ptbr.png",
@@ -189,6 +206,7 @@ export const projects: PortfolioProject[] = [
 		keywords: ["React", "UX", "Responsivo"],
 		visitUrl: "https://samuelsblog.xyz/",
 		githubUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
+		isAvailable: true,
 		prints: [
 			{
 				src: "/projects/blog/blog-home-ptbr.png",
@@ -213,6 +231,7 @@ export const projects: PortfolioProject[] = [
 		keywords: ["Node.js", "TypeScript", "API REST"],
 		visitUrl: "https://github.com/Samuel-lab-prog/blogBackend",
 		githubUrl: "https://github.com/Samuel-lab-prog/blogBackend",
+		isAvailable: false,
 		prints: [
 			{
 				src: "/projects/blog/blog-home-ptbr.png",
@@ -237,6 +256,7 @@ export const projects: PortfolioProject[] = [
 		keywords: ["Astro", "UI", "Estático"],
 		visitUrl: "https://github.com/Samuel-lab-prog/croma",
 		githubUrl: "https://github.com/Samuel-lab-prog/croma",
+		isAvailable: true,
 		prints: [
 			{ src: "/projects/croma/print-1.svg", alt: "Print 1 do croma" },
 			{ src: "/projects/croma/print-2.svg", alt: "Print 2 do croma" },

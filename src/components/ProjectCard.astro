@@ -11,12 +11,48 @@ const { project } = Astro.props as Props;
 
 <article data-categories={project.categories.join(",")}>
 	<h3>{project.name}</h3>
+	<div class="project-availability">
+		<span class="availability-badge availability-trigger">
+			<span
+				class={`availability-dot ${project.isAvailable ? "is-available" : "is-unavailable"}`}
+				aria-label={project.isAvailable ? "Projeto disponível" : "Projeto indisponível"}
+				tabindex="0"
+			></span>
+			<svg class="availability-info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+				<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
+				<path d="M12 10.2v5.2M12 7.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+			</svg>
+			<span class="availability-text">{project.isAvailable ? "Disponível" : "Indisponível"}</span>
+			<span class="availability-tooltip" role="tooltip">
+				{project.isAvailable
+					? "Disponível: projeto hospedado e com infraestrutura ativa."
+					: "Indisponível no momento: hospedagem e banco desativados para reduzir custos."}
+			</span>
+		</span>
+	</div>
 	<p>{project.description}</p>
 	<div class="keyword-list">
 		{project.keywords.map((keyword) => <span class="keyword-pill">{keyword}</span>)}
 	</div>
 	<div class="project-links">
-		<a href={project.visitUrl} target="_blank" rel="noreferrer"><Icon name="external" /> Visitar projeto</a>
+		{
+			project.isAvailable ? (
+				<a href={project.visitUrl} target="_blank" rel="noreferrer">
+					<Icon name="external" /> Visitar projeto
+				</a>
+			) : (
+				<span class="project-link-disabled availability-trigger" aria-disabled="true" tabindex="0">
+					<Icon name="external" /> Projeto indisponível
+					<svg class="availability-info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+						<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
+						<path d="M12 10.2v5.2M12 7.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+					</svg>
+					<span class="availability-tooltip" role="tooltip">
+						Indisponível no momento: hospedagem e banco desativados para reduzir custos.
+					</span>
+				</span>
+			)
+		}
 		<a href={project.githubUrl} target="_blank" rel="noreferrer"><Icon name="github" /> Ver no GitHub</a>
 	</div>
 	<div id={`gallery-${project.id}`} class="carousel" data-index="0">
