@@ -43,11 +43,11 @@ export const myData: MyData = {
 		{ label: "Contato", href: "#contato" },
 	],
 	skills: [
-		"Arquitetura de software: DDD, CQRS, Ports and Adapters, Event Sourcing, Event-Driven Architecture",
-		"Modelagem de domínio e regras de negócio com foco em escalabilidade e manutenção",
-		"Resolução de problemas complexos e tomada de decisão técnica orientada a contexto",
-		"Comunicação clara e colaboração em equipe para alinhar decisões técnicas com objetivos do projeto",
-		"Qualidade: testes, lint, typecheck e métricas arquiteturais, automação de pipelines CI/CD e monitoramento",
+		"Definição de arquitetura de software com foco em clareza, evolução e baixo acoplamento",
+		"Modelagem de domínio e regras de negócio para suportar crescimento do produto",
+		"Tomada de decisão técnica orientada a contexto, custo e impacto no longo prazo",
+		"Comunicação clara e colaboração com time e stakeholders",
+		"Cultura de qualidade com testes, revisão de código e automação de CI/CD",
 	],
 	experience: [
 		{

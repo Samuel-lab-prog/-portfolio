@@ -260,6 +260,15 @@ li {
 	color: var(--muted);
 }
 
+.block ul {
+	margin: 0;
+	padding-left: 1.25rem;
+}
+
+.block ul li + li {
+	margin-top: 12px;
+}
+
 .block h3 {
 	color: #d5dde7;
 }
