@@ -43,6 +43,7 @@ export const myData: MyData = {
 		{ label: "Contato", href: "#contato" },
 	],
 	skills: [
+		"Multimedalhista em competições de matemática, com experiência em resolução de problemas complexos e raciocínio lógico",
 		"Definição de arquitetura de software com foco em clareza, evolução e baixo acoplamento",
 		"Modelagem de domínio e regras de negócio para suportar crescimento do produto",
 		"Tomada de decisão técnica orientada a contexto, custo e impacto no longo prazo",

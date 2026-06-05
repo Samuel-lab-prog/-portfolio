@@ -337,6 +337,24 @@ body {
 		visibility 0s linear 0s;
 }
 
+@media (max-width: 860px) {
+	.availability-tooltip {
+		left: 0;
+		right: auto;
+		top: calc(100% + 8px);
+		bottom: auto;
+		width: min(280px, calc(100vw - 32px));
+		max-width: calc(100vw - 32px);
+		white-space: normal;
+		transform: translateY(6px);
+	}
+
+	.availability-trigger:hover .availability-tooltip,
+	.availability-trigger:focus-within .availability-tooltip {
+		transform: translateY(0);
+	}
+}
+
 .grid p,
 li {
 	color: var(--muted);
