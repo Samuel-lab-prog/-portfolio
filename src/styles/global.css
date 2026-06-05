@@ -338,20 +338,50 @@ body {
 }
 
 @media (max-width: 860px) {
+	.project-availability {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.availability-badge {
+		flex-wrap: wrap;
+		width: 100%;
+		align-items: flex-start;
+	}
+
 	.availability-tooltip {
-		left: 0;
-		right: auto;
-		top: calc(100% + 8px);
-		bottom: auto;
-		width: min(280px, calc(100vw - 32px));
-		max-width: calc(100vw - 32px);
+		position: static;
+		flex-basis: 100%;
+		width: 100%;
+		max-width: 100%;
+		margin-top: 8px;
+		box-sizing: border-box;
+		display: block;
 		white-space: normal;
-		transform: translateY(6px);
+		transform: none;
 	}
 
 	.availability-trigger:hover .availability-tooltip,
 	.availability-trigger:focus-within .availability-tooltip {
-		transform: translateY(0);
+		transform: none;
+	}
+
+	.project-link-disabled {
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		width: 100%;
+		white-space: normal;
+	}
+
+	.project-link-disabled .availability-tooltip {
+		position: static;
+		flex-basis: 100%;
+		width: 100%;
+		max-width: 100%;
+		margin-top: 8px;
+		box-sizing: border-box;
+		display: block;
 	}
 }
 
