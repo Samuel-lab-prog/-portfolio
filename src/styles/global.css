@@ -251,17 +251,19 @@ body {
 }
 
 .project-availability {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 6px;
 	margin-bottom: 10px;
 }
 
 .availability-badge {
-	position: relative;
-	display: inline-flex;
+	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: 8px;
+	width: 100%;
 }
 
 .availability-dot {
@@ -296,13 +298,8 @@ body {
 	letter-spacing: 0.01em;
 }
 
-.availability-tooltip {
-	position: absolute;
-	left: 50%;
-	bottom: calc(100% + 10px);
-	transform: translate(-50%, 6px);
-	width: max-content;
-	max-width: min(280px, 82vw);
+.availability-message {
+	width: 100%;
 	padding: 10px 12px;
 	border-radius: 10px;
 	border: 1px solid color-mix(in srgb, var(--border) 85%, #4b5563);
@@ -312,58 +309,11 @@ body {
 	font-size: 0.78rem;
 	line-height: 1.45;
 	box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
-	transition:
-		opacity 0.2s ease,
-		transform 0.2s ease,
-		visibility 0s linear 0.2s;
-	z-index: 5;
-}
-
-.availability-trigger {
-	position: relative;
-}
-
-.availability-trigger:hover .availability-tooltip,
-.availability-trigger:focus-within .availability-tooltip {
-	opacity: 1;
-	visibility: visible;
-	transform: translate(-50%, 0);
-	transition:
-		opacity 0.2s ease,
-		transform 0.2s ease,
-		visibility 0s linear 0s;
 }
 
 @media (max-width: 860px) {
 	.project-availability {
-		display: flex;
-		align-items: flex-start;
-	}
-
-	.availability-badge {
-		flex-wrap: wrap;
 		width: 100%;
-		align-items: flex-start;
-	}
-
-	.availability-tooltip {
-		position: static;
-		flex-basis: 100%;
-		width: 100%;
-		max-width: 100%;
-		margin-top: 8px;
-		box-sizing: border-box;
-		display: block;
-		white-space: normal;
-		transform: none;
-	}
-
-	.availability-trigger:hover .availability-tooltip,
-	.availability-trigger:focus-within .availability-tooltip {
-		transform: none;
 	}
 
 	.project-link-disabled {
@@ -374,14 +324,8 @@ body {
 		white-space: normal;
 	}
 
-	.project-link-disabled .availability-tooltip {
-		position: static;
-		flex-basis: 100%;
+	.project-link-disabled .availability-message {
 		width: 100%;
-		max-width: 100%;
-		margin-top: 8px;
-		box-sizing: border-box;
-		display: block;
 	}
 }
 
