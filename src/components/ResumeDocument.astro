@@ -32,7 +32,13 @@ const { data, copy } = Astro.props as Props;
 		<div class="resume-contact-line" aria-label={copy.contactsLabel}>
 			{data.contact.map((item, index) => (
 				<>
-					<span>{item.value}</span>
+					{item.href ? (
+						<a href={item.href} target="_blank" rel="noreferrer">
+							{item.value}
+						</a>
+					) : (
+						<span>{item.value}</span>
+					)}
 					{index < data.contact.length - 1 && <span class="resume-separator" aria-hidden="true">,</span>}
 				</>
 			))}

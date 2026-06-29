@@ -188,17 +188,20 @@ body {
 	align-items: center;
 	gap: 8px;
 	border: 1px solid transparent;
+	box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.08);
 }
 
 .actions a.ghost {
 	background: transparent;
 	color: #c9d4e2;
 	border: 1px solid #3b4958;
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
 .actions a:hover {
 	transform: translateY(-2px);
 	filter: brightness(1.05);
+	box-shadow: 0 12px 24px rgba(34, 211, 238, 0.08);
 }
 
 .actions a .icon {
@@ -431,8 +434,8 @@ li {
 .project-links button {
 	text-decoration: none;
 	border: 1px solid var(--border);
-	background: #0b1118;
-	color: var(--text);
+	background: linear-gradient(135deg, #0f1722, #0b1118);
+	color: #eef7fb;
 	padding: 8px 12px;
 	border-radius: 10px;
 	font-size: 0.9rem;
@@ -444,6 +447,7 @@ li {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
+	box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.06);
 }
 
 .project-link-disabled {
@@ -465,7 +469,8 @@ li {
 .project-links a:hover,
 .project-links button:hover {
 	transform: translateY(-1px);
-	border-color: #5a6876;
+	border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+	box-shadow: 0 10px 20px rgba(34, 211, 238, 0.08);
 }
 
 .carousel {
@@ -630,8 +635,8 @@ li {
 .contact-links a {
 	text-decoration: none;
 	border: 1px solid var(--border);
-	background: linear-gradient(135deg, #111827, #0b1118);
-	color: var(--text);
+	background: linear-gradient(135deg, #121c29, #0b1118);
+	color: #eef7fb;
 	padding: 10px 14px;
 	border-radius: 12px;
 	font-weight: 700;
@@ -642,12 +647,13 @@ li {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
+	box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.06);
 }
 
 .contact-links a:hover {
 	transform: translateY(-2px);
-	border-color: #6b7280;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+	border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+	box-shadow: 0 12px 24px rgba(34, 211, 238, 0.08);
 }
 
 .site-footer {
@@ -700,18 +706,20 @@ li {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	color: var(--muted);
-	background: #0f1520;
+	color: #dbeaf3;
+	background: linear-gradient(135deg, #111827, #0f1520);
 	transition:
 		transform 0.18s ease,
 		border-color 0.18s ease,
 		color 0.18s ease;
+	box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.05);
 }
 
 .site-footer-icons a:hover {
 	transform: translateY(-2px);
 	border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
 	color: var(--accent);
+	box-shadow: 0 10px 20px rgba(34, 211, 238, 0.08);
 }
 
 @media (max-width: 860px) {

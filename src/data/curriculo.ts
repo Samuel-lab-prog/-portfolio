@@ -22,6 +22,7 @@ export type ResumeData = {
 	contact: {
 		label: string;
 		value: string;
+		href?: string;
 	}[];
 };
 
@@ -96,6 +97,7 @@ export const curriculoData: ResumeData = {
 		"Inglês: intermediário (leitura, escrita e compreensão)",
 	],
 	contact: [
+		{ label: "Portfólio", value: "portfolio-pi-khaki-44.vercel.app", href: "https://portfolio-pi-khaki-44.vercel.app/" },
 		{ label: "E-mail", value: "samuel.gomes.5762@gmail.com" },
 		{ label: "Telefone", value: "(51) 99166-9896" },
 		{ label: "GitHub", value: "github.com/Samuel-lab-prog" },

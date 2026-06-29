@@ -71,6 +71,7 @@ export const curriculoEnData: ResumeData = {
 		"English: intermediate (reading, writing, and comprehension)",
 	],
 	contact: [
+		{ label: "Portfolio", value: "portfolio-pi-khaki-44.vercel.app", href: "https://portfolio-pi-khaki-44.vercel.app/" },
 		{ label: "E-mail", value: "samuel.gomes.5762@gmail.com" },
 		{ label: "Phone", value: "(51) 99166-9896" },
 		{ label: "GitHub", value: "github.com/Samuel-lab-prog" },

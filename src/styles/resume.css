@@ -18,12 +18,12 @@
 	margin: 0;
 	font-size: clamp(1.15rem, 2.2vw, 1.55rem);
 	letter-spacing: -0.02em;
-	color: #444;
+	color: #d8e2ee;
 }
 
 .resume-toolbar p {
 	margin: 6px 0 0;
-	color: #666;
+	color: #9da7b3;
 	font-size: 0.88rem;
 	max-width: 62ch;
 }
@@ -38,9 +38,9 @@
 	display: inline-flex;
 	align-items: center;
 	padding: 2px;
-	border: 1px solid #bdbdbd;
+	border: 1px solid #3b4958;
 	border-radius: 999px;
-	background: #f3f3f3;
+	background: #0f141b;
 	gap: 2px;
 }
 
@@ -51,7 +51,7 @@
 	min-width: 4.8rem;
 	padding: 7px 10px;
 	border-radius: 999px;
-	color: #666;
+	color: #9da7b3;
 	text-decoration: none;
 	font-size: 0.78rem;
 	font-weight: 700;
@@ -61,20 +61,20 @@
 		color 0.18s ease;
 }
 
-.resume-language-switch a.active {
-	background: #ddd;
-	color: #333;
+.resume-language-switch a:hover {
+	color: #d8e2ee;
 }
 
-.resume-language-switch a:hover {
-	color: #333;
+.resume-language-switch a.active {
+	background: #22d3ee;
+	color: #06202a;
 }
 
 .resume-toolbar-actions a,
 .resume-toolbar-actions button {
-	border: 1px solid #9c9c9c;
-	background: #f4f4f4;
-	color: #444;
+	border: 1px solid #3b4958;
+	background: #0f141b;
+	color: #d8e2ee;
 	padding: 8px 12px;
 	border-radius: 12px;
 	font-weight: 600;
@@ -91,20 +91,20 @@
 
 .resume-toolbar-actions a.ghost {
 	background: transparent;
-	color: #555;
+	color: #d8e2ee;
 }
 
 .resume-toolbar-actions a.primary,
 .resume-toolbar-actions button.primary {
-	background: #e8e8e8;
-	border-color: #b4b4b4;
-	color: #333;
+	background: #22d3ee;
+	border-color: transparent;
+	color: #06202a;
 }
 
 .resume-toolbar-actions a:hover,
 .resume-toolbar-actions button:hover {
 	transform: translateY(-1px);
-	border-color: #7f7f7f;
+	border-color: #5a6876;
 }
 
 .resume-shell {
@@ -136,8 +136,11 @@
 .resume-document a:visited,
 .resume-document a:hover,
 .resume-document a:focus {
-	color: #666;
-	text-decoration: none;
+	color: #60a5fa;
+	-webkit-text-fill-color: #60a5fa;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.16em;
 }
 
 .resume-header {
@@ -192,8 +195,28 @@
 .resume-contact-line span {
 	color: inherit;
 	-webkit-text-fill-color: inherit;
-	text-decoration: none;
 	white-space: nowrap;
+}
+
+.resume-contact-line a {
+	display: inline-flex;
+	align-items: center;
+	padding: 0;
+	border-radius: 0;
+	border: 0;
+	background: transparent;
+	color: #60a5fa;
+	-webkit-text-fill-color: #60a5fa;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.16em;
+	font-weight: 600;
+	transition: color 0.18s ease;
+}
+
+.resume-contact-line a:hover {
+	color: #93c5fd;
+	-webkit-text-fill-color: #93c5fd;
 }
 
 .resume-contact-line strong {
@@ -311,8 +334,13 @@
 .resume-entry-head a:visited,
 .resume-entry-head a:hover,
 .resume-entry-head a:focus {
-	color: #777;
-	text-decoration: none;
+	color: #60a5fa;
+	-webkit-text-fill-color: #60a5fa;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.16em;
+	padding-bottom: 0;
+	border-bottom: 0;
 }
 
 .resume-entry-summary {
@@ -425,17 +453,18 @@
 	}
 
 	a {
-		color: #555 !important;
-		text-decoration: none !important;
+		color: #60a5fa !important;
+		-webkit-text-fill-color: #60a5fa !important;
+		text-decoration: underline !important;
 	}
 
 	.resume-entry-head a,
 	.resume-entry-head a:visited,
 	.resume-entry-head a:hover,
 	.resume-entry-head a:focus {
-		color: #666 !important;
-		-webkit-text-fill-color: #666 !important;
-		text-decoration: none !important;
+		color: #60a5fa !important;
+		-webkit-text-fill-color: #60a5fa !important;
+		text-decoration: underline !important;
 	}
 }
 
