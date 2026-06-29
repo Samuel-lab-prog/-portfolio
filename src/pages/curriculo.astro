@@ -1,0 +1,62 @@
+---
+import ResumePage from "../components/ResumePage.astro";
+import { curriculoData } from "../data/curriculo";
+import "../styles/resume.css";
+
+const baseUrl = Astro.site ?? new URL("https://samuel.dev");
+const pageUrl = new URL("/curriculo", baseUrl).toString();
+
+const uiCopy = {
+	pageTitle: "Currículo | Samuel Gomes Monni",
+	pageDescription: "Currículo em PDF gerado a partir dos dados do portfólio.",
+	pageKeywords: ["currículo", "pdf", "desenvolvedor fullstack", "samuel gomes monni", "lattes"],
+	toolbarTitle: "Currículo em PDF",
+	toolbarDescription: "Versão enxuta e legível para impressão, construída a partir dos dados do currículo.",
+	printButton: "Gerar PDF",
+	backLink: "Voltar ao portfólio",
+	languageLabel: "Idioma",
+	ptLabel: "Português",
+	enLabel: "Inglês",
+};
+
+const documentCopy = {
+	resumeLabel: "Currículo em português",
+	contactsLabel: "Contatos",
+	summaryTitle: "Resumo",
+	skillsTitle: "Competências-chave",
+	experienceTitle: "Experiência",
+	projectsTitle: "Projetos relevantes",
+	technologiesTitle: "Tecnologias",
+	languagesTitle: "Idiomas",
+};
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: curriculoData.name,
+	jobTitle: curriculoData.title,
+	inLanguage: "pt",
+	url: pageUrl,
+	email: "mailto:samuel.gomes.5762@gmail.com",
+	sameAs: [
+		"https://github.com/Samuel-lab-prog",
+		"http://lattes.cnpq.br/0187401279570368",
+		"https://wa.me/5551991669896",
+	],
+};
+---
+
+<ResumePage
+	lang="pt"
+	ptPath="/curriculo"
+	enPath="/curriculo-en"
+	canonicalPath="/curriculo"
+	alternateHref="/curriculo-en"
+	htmlLang="pt-BR"
+	alternateHreflang="en"
+	ogLocale="pt_BR"
+	structuredData={structuredData}
+	data={curriculoData}
+	documentCopy={documentCopy}
+	uiCopy={uiCopy}
+/>

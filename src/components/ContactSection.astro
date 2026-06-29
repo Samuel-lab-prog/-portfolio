@@ -5,16 +5,22 @@ import type { MyData } from "../data/myData";
 
 type Props = {
 	data: MyData["contact"];
+	copy: {
+		title: string;
+		intro: string;
+		emailLabel: string;
+		phoneLabel: string;
+	};
 };
 
-const { data } = Astro.props as Props;
+const { data, copy } = Astro.props as Props;
 ---
 
 <section id="contato" class="block">
-	<SectionTitle label="Contato" icon="mail" />
-	<p>{data.intro}</p>
-	<p><strong><Icon name="mail" /> Email:</strong> {data.email}</p>
-	<p><strong><Icon name="phone" /> Telefone:</strong> {data.phone}</p>
+	<SectionTitle label={copy.title} icon="mail" />
+	<p>{copy.intro}</p>
+	<p><strong><Icon name="mail" /> {copy.emailLabel}:</strong> {data.email}</p>
+	<p><strong><Icon name="phone" /> {copy.phoneLabel}:</strong> {data.phone}</p>
 	<div class="contact-links">
 		{
 			data.links.map((link) => (

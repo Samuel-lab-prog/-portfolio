@@ -4,9 +4,23 @@ import Icon from "./Icon.astro";
 
 type Props = {
 	project: PortfolioProject;
+	copy: {
+		availableLabel: string;
+		unavailableLabel: string;
+		availableMessage: string;
+		unavailableMessage: string;
+		visitProjectLabel: string;
+		viewGithubLabel: string;
+		prevImageLabel: string;
+		nextImageLabel: string;
+		closeLabel: string;
+		expandedImageLabel: string;
+		availableProjectLabel: string;
+		unavailableProjectLabel: string;
+	};
 };
 
-const { project } = Astro.props as Props;
+const { project, copy } = Astro.props as Props;
 ---
 
 <article data-categories={project.categories.join(",")}>
@@ -15,18 +29,18 @@ const { project } = Astro.props as Props;
 		<span class="availability-badge">
 			<span
 				class={`availability-dot ${project.isAvailable ? "is-available" : "is-unavailable"}`}
-				aria-label={project.isAvailable ? "Projeto disponível" : "Projeto indisponível"}
+				aria-label={project.isAvailable ? copy.availableProjectLabel : copy.unavailableProjectLabel}
 				tabindex="0"
 			></span>
 			<svg class="availability-info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 				<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
 				<path d="M12 10.2v5.2M12 7.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
 			</svg>
-			<span class="availability-text">{project.isAvailable ? "Disponível" : "Indisponível"}</span>
+			<span class="availability-text">{project.isAvailable ? copy.availableLabel : copy.unavailableLabel}</span>
 			<span class="availability-message">
 				{project.isAvailable
-					? "Disponível: projeto hospedado e com infraestrutura ativa."
-					: "Indisponível no momento: hospedagem e banco desativados para reduzir custos."}
+					? copy.availableMessage
+					: copy.unavailableMessage}
 			</span>
 		</span>
 	</div>
@@ -38,18 +52,18 @@ const { project } = Astro.props as Props;
 		{
 			project.isAvailable ? (
 				<a href={project.visitUrl} target="_blank" rel="noreferrer">
-					<Icon name="external" /> Visitar projeto
+					<Icon name="external" /> {copy.visitProjectLabel}
 				</a>
 			) : (
 				<span class="project-link-disabled" aria-disabled="true" tabindex="0">
-					<Icon name="external" /> Projeto indisponível
+					<Icon name="external" /> {copy.unavailableProjectLabel}
 				</span>
 			)
 		}
-		<a href={project.githubUrl} target="_blank" rel="noreferrer"><Icon name="github" /> Ver no GitHub</a>
+		<a href={project.githubUrl} target="_blank" rel="noreferrer"><Icon name="github" /> {copy.viewGithubLabel}</a>
 	</div>
 	<div id={`gallery-${project.id}`} class="carousel" data-index="0">
-		<button class="carousel-control prev" type="button" aria-label="Imagem anterior">
+		<button class="carousel-control prev" type="button" aria-label={copy.prevImageLabel}>
 			&lt;
 		</button>
 		<div class="carousel-stage">
@@ -62,7 +76,7 @@ const { project } = Astro.props as Props;
 				/>
 			))}
 		</div>
-		<button class="carousel-control next" type="button" aria-label="Próxima imagem">
+		<button class="carousel-control next" type="button" aria-label={copy.nextImageLabel}>
 			&gt;
 		</button>
 	</div>

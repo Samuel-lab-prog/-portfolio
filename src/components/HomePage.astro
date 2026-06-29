@@ -1,0 +1,410 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "./Navbar.astro";
+import HeroSection from "./HeroSection.astro";
+import ProjectsSection from "./ProjectsSection.astro";
+import ContactSection from "./ContactSection.astro";
+import Footer from "./Footer.astro";
+import SectionTitle from "./SectionTitle.astro";
+import type { MyData } from "../data/myData";
+import type { PortfolioProject } from "../data/projects";
+
+type Copy = {
+	pageTitle: string;
+	pageDescription: string;
+	pageKeywords: string[];
+	htmlLang: string;
+	alternateHreflang: string;
+	ogLocale: string;
+	navbarMenuLabel: string;
+	navbarLanguageLabel: string;
+	navbarLanguagePtLabel: string;
+	navbarLanguageEnLabel: string;
+	hero: {
+		projectsLabel: string;
+		experienceLabel: string;
+		resumeLabel: string;
+	};
+	projects: {
+		title: string;
+		filtersLabel: string;
+		filters: {
+			destaque: string;
+			frontend: string;
+			backend: string;
+			fullstack: string;
+		};
+		card: {
+			availableLabel: string;
+			unavailableLabel: string;
+			availableMessage: string;
+			unavailableMessage: string;
+			visitProjectLabel: string;
+			viewGithubLabel: string;
+			prevImageLabel: string;
+			nextImageLabel: string;
+			closeLabel: string;
+			expandedImageLabel: string;
+			availableProjectLabel: string;
+			unavailableProjectLabel: string;
+		};
+	};
+	experienceTitle: string;
+	skillsTitle: string;
+	technologiesTitle: string;
+	languagesTitle: string;
+	contact: {
+		title: string;
+		intro: string;
+		emailLabel: string;
+		phoneLabel: string;
+	};
+	footer: {
+		title: string;
+		subtitle: string;
+		yearSuffix: string;
+		emailLabel: string;
+		phoneLabel: string;
+		githubLabel: string;
+		projectsLabel: string;
+	};
+	script: {
+		closeLabel: string;
+		prevImageLabel: string;
+		nextImageLabel: string;
+		imageAltLabel: string;
+	};
+};
+
+type Props = {
+	lang: "pt" | "en";
+	ptPath: string;
+	enPath: string;
+	canonicalPath: string;
+	alternateHref: string;
+	brand: string;
+	brandHref: string;
+	data: MyData;
+	projects: PortfolioProject[];
+	structuredData: Record<string, unknown> | Array<Record<string, unknown>>;
+	copy: Copy;
+	resumeHref: string;
+};
+
+const { lang, ptPath, enPath, canonicalPath, alternateHref, brand, brandHref, data, projects, structuredData, copy, resumeHref } =
+	Astro.props as Props;
+---
+
+<BaseLayout
+	title={copy.pageTitle}
+	description={copy.pageDescription}
+	keywords={[...copy.pageKeywords]}
+	canonicalPath={canonicalPath}
+	alternateHref={alternateHref}
+	htmlLang={copy.htmlLang}
+	alternateHreflang={copy.alternateHreflang}
+	ogLocale={copy.ogLocale}
+	structuredData={structuredData}
+>
+	<Navbar
+		brand={brand}
+		brandHref={brandHref}
+		items={data.navItems}
+		menuLabel={copy.navbarMenuLabel}
+		language={{
+			current: lang,
+			ptHref: ptPath,
+			enHref: enPath,
+			ptLabel: copy.navbarLanguagePtLabel,
+			enLabel: copy.navbarLanguageEnLabel,
+			ariaLabel: copy.navbarLanguageLabel,
+		}}
+	/>
+
+	<main class="page">
+		<HeroSection
+			eyebrow={data.heroEyebrow}
+			name={data.name}
+			description={data.heroDescription}
+			actions={{
+				projectsLabel: copy.hero.projectsLabel,
+				experienceLabel: copy.hero.experienceLabel,
+				resumeLabel: copy.hero.resumeLabel,
+				resumeHref,
+			}}
+		/>
+
+		<ProjectsSection projects={projects} copy={copy.projects} />
+
+		<section id="experiencia" class="block">
+			<SectionTitle label={copy.experienceTitle} icon="briefcase" />
+			<div class="timeline">
+				{
+					data.experience.map((item) => (
+						<article>
+							<h3>{item.title}</h3>
+							<p>{item.description}</p>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<section id="habilidades" class="block">
+			<SectionTitle label={copy.skillsTitle} icon="wrench" />
+			<ul>
+				{data.skills.map((item) => <li>{item}</li>)}
+			</ul>
+		</section>
+
+		<section id="tecnologias" class="block">
+			<SectionTitle label={copy.technologiesTitle} icon="cpu" />
+			<ul>
+				{data.technologies.map((item) => <li>{item}</li>)}
+			</ul>
+		</section>
+
+		<section id="idiomas" class="block">
+			<SectionTitle label={copy.languagesTitle} icon="globe" />
+			<ul>
+				{data.languages.map((item) => <li>{item}</li>)}
+			</ul>
+		</section>
+
+		<ContactSection
+			data={data.contact}
+			copy={{
+				title: copy.contact.title,
+				intro: copy.contact.intro,
+				emailLabel: copy.contact.emailLabel,
+				phoneLabel: copy.contact.phoneLabel,
+			}}
+		/>
+	</main>
+	<Footer copy={copy.footer} />
+</BaseLayout>
+
+<script define:vars={{ copy }}>
+	function smoothScrollToHash(hash) {
+		const target = document.querySelector(hash);
+		const navbar = document.querySelector(".navbar");
+		if (!target) return;
+
+		const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+		const targetTop = target.getBoundingClientRect().top + window.scrollY;
+		const destination = Math.max(0, targetTop - navbarHeight - 18);
+
+		const start = window.scrollY;
+		const distance = destination - start;
+		const duration = 620;
+		const startTime = performance.now();
+
+		function easeInOutCubic(t) {
+			return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+		}
+
+		function step(currentTime) {
+			const elapsed = currentTime - startTime;
+			const progress = Math.min(1, elapsed / duration);
+			const eased = easeInOutCubic(progress);
+			window.scrollTo(0, start + distance * eased);
+			if (progress < 1) requestAnimationFrame(step);
+		}
+
+		requestAnimationFrame(step);
+	}
+
+	const navbar = document.querySelector("[data-navbar]");
+	const navbarToggle = document.querySelector("[data-navbar-toggle]");
+	const navbarLinks = Array.from(document.querySelectorAll("[data-navbar-links] a"));
+
+	navbarToggle?.addEventListener("click", () => {
+		const isOpen = navbar?.classList.toggle("is-open");
+		navbarToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+	});
+
+	for (const link of navbarLinks) {
+		link.addEventListener("click", () => {
+			navbar?.classList.remove("is-open");
+			navbarToggle?.setAttribute("aria-expanded", "false");
+		});
+	}
+
+	const hashLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
+	for (const link of hashLinks) {
+		link.addEventListener("click", (event) => {
+			const href = link.getAttribute("href");
+			if (!href || href === "#") return;
+			event.preventDefault();
+			smoothScrollToHash(href);
+			history.replaceState(null, "", href);
+		});
+	}
+
+	const filters = Array.from(document.querySelectorAll(".filter"));
+	const cards = Array.from(document.querySelectorAll("#projects-grid article"));
+
+	function applyFilter(filter) {
+		for (const card of cards) {
+			const categories = (card.dataset.categories ?? "")
+				.split(",")
+				.map((value) => value.trim())
+				.filter(Boolean);
+			const shouldShow = categories.includes(filter);
+			card.style.display = shouldShow ? "block" : "none";
+		}
+	}
+
+	for (const button of filters) {
+		button.addEventListener("click", () => {
+			for (const current of filters) current.classList.remove("is-active");
+			button.classList.add("is-active");
+			applyFilter(button.dataset.filter ?? "destaque");
+		});
+	}
+
+	const carousels = Array.from(document.querySelectorAll(".carousel"));
+	for (const carousel of carousels) {
+		const images = Array.from(carousel.querySelectorAll(".carousel-image"));
+		const prev = carousel.querySelector(".carousel-control.prev");
+		const next = carousel.querySelector(".carousel-control.next");
+
+		function render(index) {
+			for (const image of images) image.classList.remove("is-active");
+			if (images[index]) images[index].classList.add("is-active");
+			carousel.dataset.index = String(index);
+		}
+
+		prev?.addEventListener("click", () => {
+			const current = Number(carousel.dataset.index ?? "0");
+			const nextIndex = (current - 1 + images.length) % images.length;
+			render(nextIndex);
+		});
+
+		next?.addEventListener("click", () => {
+			const current = Number(carousel.dataset.index ?? "0");
+			const nextIndex = (current + 1) % images.length;
+			render(nextIndex);
+		});
+	}
+
+	applyFilter("destaque");
+
+	const lightbox = document.createElement("div");
+	lightbox.className = "lightbox";
+	lightbox.setAttribute("hidden", "");
+	lightbox.hidden = true;
+	lightbox.innerHTML = `
+		<div class="lightbox-backdrop"></div>
+		<div class="lightbox-content">
+			<button class="lightbox-close" type="button" aria-label="${copy.script.closeLabel}">×</button>
+			<button class="lightbox-nav prev" type="button" aria-label="${copy.script.prevImageLabel}"><</button>
+			<img class="lightbox-image" alt="${copy.script.imageAltLabel}" />
+			<button class="lightbox-nav next" type="button" aria-label="${copy.script.nextImageLabel}">></button>
+		</div>
+	`;
+	document.body.appendChild(lightbox);
+
+	const lightboxImage = lightbox.querySelector(".lightbox-image");
+	const closeButton = lightbox.querySelector(".lightbox-close");
+	const backdrop = lightbox.querySelector(".lightbox-backdrop");
+	const prevButton = lightbox.querySelector(".lightbox-nav.prev");
+	const nextButton = lightbox.querySelector(".lightbox-nav.next");
+	let activeImages = [];
+	let activeIndex = 0;
+	let touchStartX = 0;
+	let touchStartY = 0;
+
+	function renderLightbox() {
+		const current = activeImages[activeIndex];
+		if (!current || !lightboxImage) return;
+		const src = current.src || current.currentSrc || "";
+		if (!src) return;
+		lightboxImage.src = src;
+		lightboxImage.alt = current.alt || copy.script.imageAltLabel;
+	}
+
+	function openLightbox(images, index) {
+		if (!images.length) return;
+		activeImages = images;
+		activeIndex = index;
+		renderLightbox();
+		lightbox.removeAttribute("hidden");
+		lightbox.hidden = false;
+		document.body.style.overflow = "hidden";
+	}
+
+	function closeLightbox() {
+		lightbox.setAttribute("hidden", "");
+		lightbox.hidden = true;
+		activeImages = [];
+		activeIndex = 0;
+		document.body.style.overflow = "";
+	}
+
+	prevButton?.addEventListener("click", () => {
+		if (!activeImages.length) return;
+		activeIndex = (activeIndex - 1 + activeImages.length) % activeImages.length;
+		renderLightbox();
+	});
+
+	nextButton?.addEventListener("click", () => {
+		if (!activeImages.length) return;
+		activeIndex = (activeIndex + 1) % activeImages.length;
+		renderLightbox();
+	});
+
+	lightbox.addEventListener(
+		"touchstart",
+		(event) => {
+			const touch = event.changedTouches?.[0];
+			if (!touch) return;
+			touchStartX = touch.clientX;
+			touchStartY = touch.clientY;
+		},
+		{ passive: true },
+	);
+
+	lightbox.addEventListener(
+		"touchend",
+		(event) => {
+			if (!activeImages.length) return;
+			const touch = event.changedTouches?.[0];
+			if (!touch) return;
+			const deltaX = touch.clientX - touchStartX;
+			const deltaY = touch.clientY - touchStartY;
+			const minSwipe = 40;
+			if (Math.abs(deltaX) < minSwipe || Math.abs(deltaX) < Math.abs(deltaY)) return;
+			if (deltaX > 0) prevButton?.click();
+			if (deltaX < 0) nextButton?.click();
+		},
+		{ passive: true },
+	);
+
+	closeButton?.addEventListener("click", closeLightbox);
+	backdrop?.addEventListener("click", closeLightbox);
+	lightboxImage?.addEventListener("click", closeLightbox);
+	document.addEventListener("keydown", (event) => {
+		if (lightbox.hidden) return;
+		if (event.key === "Escape") closeLightbox();
+		if (event.key === "ArrowLeft") prevButton?.click();
+		if (event.key === "ArrowRight") nextButton?.click();
+	});
+
+	const clickableImages = Array.from(document.querySelectorAll(".carousel-image"));
+	for (const image of clickableImages) {
+		image.addEventListener("click", () => {
+			const carousel = image.closest(".carousel");
+			if (!carousel) return;
+			const rawImages = Array.from(carousel.querySelectorAll(".carousel-image"));
+			const images = rawImages.map((img) => ({
+				src: img.getAttribute("src") || img.currentSrc || "",
+				alt: img.getAttribute("alt") || "",
+			}));
+			const index = rawImages.findIndex((item) => item === image);
+			openLightbox(images, index >= 0 ? index : 0);
+		});
+	}
+
+	closeLightbox();
+</script>

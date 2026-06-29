@@ -7,8 +7,12 @@ type Props = {
 	keywords?: string[];
 	ogImage?: string;
 	canonicalPath?: string;
+	alternateHref?: string;
+	alternateHreflang?: string;
 	structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 	noindex?: boolean;
+	htmlLang?: string;
+	ogLocale?: string;
 };
 
 const {
@@ -17,8 +21,12 @@ const {
 	keywords = [],
 	ogImage = "/projects/hellopoetry/print-1.svg",
 	canonicalPath,
+	alternateHref,
+	alternateHreflang,
 	structuredData,
 	noindex = false,
+	htmlLang = "pt-BR",
+	ogLocale = "pt_BR",
 } = Astro.props as Props;
 
 const siteUrl = Astro.site;
@@ -35,7 +43,7 @@ const jsonLd = structuredData
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang={htmlLang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,10 +54,10 @@ const jsonLd = structuredData
 		<meta name="theme-color" content="#0f172a" />
 		{keywordContent && <meta name="keywords" content={keywordContent} />}
 		<link rel="canonical" href={canonicalUrl} />
-		<link rel="alternate" hreflang="pt-BR" href={canonicalUrl} />
+		{alternateHref && alternateHreflang && <link rel="alternate" hreflang={alternateHreflang} href={new URL(alternateHref, siteUrl ?? Astro.url).toString()} />}
 
 		<meta property="og:type" content="website" />
-		<meta property="og:locale" content="pt_BR" />
+		<meta property="og:locale" content={ogLocale} />
 		<meta property="og:site_name" content="samuel.dev" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />

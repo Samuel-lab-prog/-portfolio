@@ -1,0 +1,108 @@
+---
+import type { ResumeData } from "../data/curriculo";
+
+type Copy = {
+	resumeLabel: string;
+	contactsLabel: string;
+	summaryTitle: string;
+	skillsTitle: string;
+	experienceTitle: string;
+	projectsTitle: string;
+	technologiesTitle: string;
+	languagesTitle: string;
+};
+
+type Props = {
+	data: ResumeData;
+	copy: Copy;
+};
+
+const { data, copy } = Astro.props as Props;
+---
+
+<article class="resume-document" aria-label={copy.resumeLabel}>
+	<header class="resume-header">
+		<div class="resume-header-top">
+			<div>
+				<h1>{data.name}</h1>
+				<p class="resume-title">{data.title}</p>
+			</div>
+		</div>
+
+		<div class="resume-contact-line" aria-label={copy.contactsLabel}>
+			{data.contact.map((item, index) => (
+				<>
+					<span>{item.value}</span>
+					{index < data.contact.length - 1 && <span class="resume-separator" aria-hidden="true">,</span>}
+				</>
+			))}
+		</div>
+
+		<div class="resume-summary">
+			<h2>{copy.summaryTitle}</h2>
+			{data.summary.map((paragraph) => <p>{paragraph}</p>)}
+		</div>
+	</header>
+
+	<section class="resume-section">
+		<h2>{copy.skillsTitle}</h2>
+		<ul class="resume-list">
+			{data.coreCompetencies.map((item) => <li>{item}</li>)}
+		</ul>
+	</section>
+	<hr class="resume-rule" />
+
+	<section class="resume-section">
+		<h2>{copy.experienceTitle}</h2>
+		<div class="resume-stack">
+			{data.experience.map((item) => (
+				<article class="resume-entry">
+					<div class="resume-entry-head">
+						<h3>{item.title}</h3>
+						<span>{item.period}</span>
+					</div>
+					<p class="resume-entry-summary">{item.bullets[0]}</p>
+					{item.bullets.length > 1 && (
+						<ul class="resume-list compact">
+							{item.bullets.slice(1).map((bullet) => <li>{bullet}</li>)}
+						</ul>
+					)}
+				</article>
+			))}
+		</div>
+	</section>
+	<hr class="resume-rule" />
+
+	<section class="resume-section">
+		<h2>{copy.projectsTitle}</h2>
+		<div class="resume-stack">
+			{data.projects.map((project) => (
+				<article class="resume-entry">
+					<div class="resume-entry-head">
+						<h3>{project.name}</h3>
+					</div>
+					<p class="resume-entry-summary">{project.description}</p>
+					<ul class="resume-list compact">
+						{project.highlights.map((highlight) => <li>{highlight}</li>)}
+					</ul>
+				</article>
+			))}
+		</div>
+	</section>
+	<hr class="resume-rule" />
+
+	<section class="resume-section">
+		<h2>{copy.technologiesTitle}</h2>
+		<ul class="resume-list compact">
+			{data.technologies.map((item) => <li>{item}</li>)}
+		</ul>
+	</section>
+	<hr class="resume-rule" />
+
+	<section class="resume-section">
+		<h2>{copy.languagesTitle}</h2>
+		<ul class="resume-list compact">
+			{data.languages.map((item) => <li>{item}</li>)}
+		</ul>
+	</section>
+</article>

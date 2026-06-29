@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ResumeDocument from "./ResumeDocument.astro";
+import type { ResumeData } from "../data/curriculo";
+
+type Copy = {
+	resumeLabel: string;
+	contactsLabel: string;
+	summaryTitle: string;
+	skillsTitle: string;
+	experienceTitle: string;
+	projectsTitle: string;
+	technologiesTitle: string;
+	languagesTitle: string;
+};
+
+type UiCopy = {
+	pageTitle: string;
+	pageDescription: string;
+	pageKeywords: string[];
+	toolbarTitle: string;
+	toolbarDescription: string;
+	printButton: string;
+	backLink: string;
+	languageLabel: string;
+	ptLabel: string;
+	enLabel: string;
+};
+
+type Props = {
+	lang: "pt" | "en";
+	ptPath: string;
+	enPath: string;
+	canonicalPath: string;
+	alternateHref: string;
+	htmlLang: string;
+	alternateHreflang: string;
+	ogLocale: string;
+	structuredData: Record<string, unknown>;
+	data: ResumeData;
+	documentCopy: Copy;
+	uiCopy: UiCopy;
+};
+
+const { lang, ptPath, enPath, canonicalPath, alternateHref, htmlLang, alternateHreflang, ogLocale, structuredData, data, documentCopy, uiCopy } = Astro.props as Props;
+---
+
+<BaseLayout
+	title={uiCopy.pageTitle}
+	description={uiCopy.pageDescription}
+	keywords={[...uiCopy.pageKeywords]}
+	canonicalPath={canonicalPath}
+	alternateHref={alternateHref}
+	htmlLang={htmlLang}
+	alternateHreflang={alternateHreflang}
+	ogLocale={ogLocale}
+	structuredData={structuredData}
+>
+	<main class="page resume-page">
+		<div class="resume-toolbar">
+			<div>
+				<h1>{uiCopy.toolbarTitle}</h1>
+				<p>{uiCopy.toolbarDescription}</p>
+			</div>
+			<div class="resume-toolbar-actions">
+				<div class="resume-language-switch" aria-label={uiCopy.languageLabel}>
+					<a class:list={{ active: lang === "pt" }} href={ptPath} aria-current={lang === "pt" ? "page" : undefined}>
+						{uiCopy.ptLabel}
+					</a>
+					<a class:list={{ active: lang === "en" }} href={enPath} aria-current={lang === "en" ? "page" : undefined}>
+						{uiCopy.enLabel}
+					</a>
+				</div>
+				<button class="primary" type="button" data-print-resume>
+					<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18">
+						<path d="M12 3v10m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+					</svg>
+					{uiCopy.printButton}
+				</button>
+				<a href="/" class="ghost">{uiCopy.backLink}</a>
+			</div>
+		</div>
+
+		<div class="resume-shell">
+			<ResumeDocument data={data} copy={documentCopy} />
+		</div>
+	</main>
+</BaseLayout>
+
+<script define:vars={{ lang, ptPath, enPath }}>
+	const requestedLang = new URLSearchParams(window.location.search).get("lang");
+	const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+	const targetPath =
+		requestedLang === "en"
+			? enPath
+			: requestedLang === "pt"
+				? ptPath
+				: null;
+
+	if (targetPath && currentPath !== targetPath) {
+		const target = new URL(targetPath, window.location.origin);
+		const search = new URLSearchParams(window.location.search);
+		search.delete("lang");
+		if (search.get("print") !== "1") {
+			search.delete("print");
+		}
+		const query = search.toString();
+		target.search = query ? `?${query}` : "";
+		window.location.replace(target.toString());
+	}
+
+	const printButton = document.querySelector("[data-print-resume]");
+	printButton?.addEventListener("click", () => {
+		window.print();
+	});
+
+	if (new URLSearchParams(window.location.search).get("print") === "1") {
+		window.addEventListener("load", () => {
+			window.print();
+		});
+	}
+</script>

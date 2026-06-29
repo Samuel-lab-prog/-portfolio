@@ -1,0 +1,120 @@
+---
+import HomePage from "../components/HomePage.astro";
+import { myDataEn } from "../data/myData.en";
+import { projectsEn } from "../data/projects.en";
+
+const baseUrl = Astro.site ?? new URL("https://samuel.dev");
+const pageUrl = new URL("/en", baseUrl).toString();
+
+const structuredData = [
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		name: myDataEn.name,
+		jobTitle: "Fullstack Developer",
+		url: pageUrl,
+		email: `mailto:${myDataEn.contact.email}`,
+		telephone: myDataEn.contact.phone,
+		sameAs: ["https://github.com/Samuel-lab-prog", "https://wa.me/5551991669896"],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		name: "samuel.dev",
+		url: pageUrl,
+		inLanguage: "en",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		name: "Portfolio projects",
+		itemListElement: projectsEn.map((project, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			name: project.name,
+			url: project.visitUrl,
+			description: project.description,
+		})),
+	},
+];
+---
+
+<HomePage
+	lang="en"
+	ptPath="/"
+	enPath="/en"
+	canonicalPath="/en"
+	alternateHref="/"
+	brand="samuel.dev"
+	brandHref="/en"
+	data={myDataEn}
+	projects={projectsEn}
+	structuredData={structuredData}
+	resumeHref="/curriculo-en"
+	copy={{
+		pageTitle: "samuel.dev",
+		pageDescription: "Portfolio and gateway to my skills",
+		pageKeywords: ["fullstack developer", "developer portfolio", "react", "typescript", "astro", "ddd", "cqrs"],
+		htmlLang: "en",
+		alternateHreflang: "pt-BR",
+		ogLocale: "en_US",
+		navbarMenuLabel: "Open menu",
+		navbarLanguageLabel: "Language",
+		navbarLanguagePtLabel: "Português",
+		navbarLanguageEnLabel: "English",
+		hero: {
+			projectsLabel: "View projects",
+			experienceLabel: "Experience",
+			resumeLabel: "Resume",
+		},
+		projects: {
+			title: "Featured projects",
+			filtersLabel: "Filter projects",
+			filters: {
+				destaque: "Featured",
+				frontend: "Frontend",
+				backend: "Backend",
+				fullstack: "Fullstack",
+			},
+			card: {
+				availableLabel: "Available",
+				unavailableLabel: "Unavailable",
+				availableMessage: "Available: hosted project with active infrastructure.",
+				unavailableMessage: "Currently unavailable: hosting and database are disabled to reduce costs.",
+				visitProjectLabel: "Visit project",
+				viewGithubLabel: "View on GitHub",
+				prevImageLabel: "Previous image",
+				nextImageLabel: "Next image",
+				closeLabel: "Close",
+				expandedImageLabel: "Expanded project image",
+				availableProjectLabel: "Available project",
+				unavailableProjectLabel: "Unavailable project",
+			},
+		},
+		experienceTitle: "Experience",
+		skillsTitle: "Skills",
+		technologiesTitle: "Technologies",
+		languagesTitle: "Languages",
+		contact: {
+			title: "Contact",
+			intro: myDataEn.contact.intro,
+			emailLabel: "Email",
+			phoneLabel: "Phone",
+		},
+		footer: {
+			title: "Samuel Gomes Monni",
+			subtitle: "Fullstack Developer • Architecture • Software Quality",
+			yearSuffix: "All rights reserved.",
+			emailLabel: "Send email",
+			phoneLabel: "Open WhatsApp",
+			githubLabel: "Open GitHub",
+			projectsLabel: "Go to projects",
+		},
+		script: {
+			closeLabel: "Close",
+			prevImageLabel: "Previous image",
+			nextImageLabel: "Next image",
+			imageAltLabel: "Expanded project image",
+		},
+	}}
+/>

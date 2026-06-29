@@ -3,26 +3,50 @@ import Icon from "./Icon.astro";
 type NavItem = { label: string; href: string };
 type Props = {
 	brand: string;
+	brandHref: string;
 	items: NavItem[];
+	menuLabel: string;
+	language?: {
+		current: "pt" | "en";
+		ptHref: string;
+		enHref: string;
+		ptLabel: string;
+		enLabel: string;
+		ariaLabel: string;
+	};
 };
 
-const { brand, items } = Astro.props as Props;
+const { brand, brandHref, items, menuLabel, language } = Astro.props as Props;
 ---
 
 <nav class="navbar" data-navbar>
 	<div class="navbar-inner">
-		<a class="brand" href="/"><Icon name="sparkles" /> {brand}</a>
-		<button
-			class="navbar-toggle"
-			type="button"
-			aria-label="Abrir menu"
-			aria-expanded="false"
-			data-navbar-toggle
-		>
-			<span></span>
-			<span></span>
-			<span></span>
-		</button>
+		<a class="brand" href={brandHref}><Icon name="sparkles" /> {brand}</a>
+		<div class="navbar-actions">
+			{
+				language && (
+					<div class="navbar-language-switch" aria-label={language.ariaLabel}>
+						<a class:list={{ active: language.current === "pt" }} href={language.ptHref} aria-current={language.current === "pt" ? "page" : undefined}>
+							{language.ptLabel}
+						</a>
+						<a class:list={{ active: language.current === "en" }} href={language.enHref} aria-current={language.current === "en" ? "page" : undefined}>
+							{language.enLabel}
+						</a>
+					</div>
+				)
+			}
+			<button
+				class="navbar-toggle"
+				type="button"
+				aria-label={menuLabel}
+				aria-expanded="false"
+				data-navbar-toggle
+			>
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
 		<div class="navbar-links" data-navbar-links>
 			{
 				items.map((item) => (
