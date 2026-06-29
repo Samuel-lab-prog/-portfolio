@@ -89,6 +89,7 @@ export const myData: MyData = {
 				external: true,
 			},
 			{ label: "Ver GitHub", href: "https://github.com/Samuel-lab-prog", external: true },
+			{ label: "Ver Lattes", href: "http://lattes.cnpq.br/0187401279570368", external: true },
 		],
 	},
 };

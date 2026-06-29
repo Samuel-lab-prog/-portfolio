@@ -43,13 +43,6 @@ const { project } = Astro.props as Props;
 			) : (
 				<span class="project-link-disabled" aria-disabled="true" tabindex="0">
 					<Icon name="external" /> Projeto indisponível
-					<svg class="availability-info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-						<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
-						<path d="M12 10.2v5.2M12 7.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-					</svg>
-					<span class="availability-message">
-						Indisponível no momento: hospedagem e banco desativados para reduzir custos.
-					</span>
 				</span>
 			)
 		}

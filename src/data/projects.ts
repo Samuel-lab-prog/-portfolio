@@ -247,20 +247,4 @@ export const projects: PortfolioProject[] = [
 			},
 		],
 	},
-	{
-		id: "croma",
-		name: "croma",
-		description:
-			"Site em Astro com foco em performance e apresentação visual, entregando carregamento rápido e experiência consistente para destacar conteúdo e identidade do projeto.",
-		categories: ["frontend"],
-		keywords: ["Astro", "UI", "Estático"],
-		visitUrl: "https://github.com/Samuel-lab-prog/croma",
-		githubUrl: "https://github.com/Samuel-lab-prog/croma",
-		isAvailable: true,
-		prints: [
-			{ src: "/projects/croma/print-1.svg", alt: "Print 1 do croma" },
-			{ src: "/projects/croma/print-2.svg", alt: "Print 2 do croma" },
-			{ src: "/projects/croma/print-3.svg", alt: "Print 3 do croma" },
-		],
-	},
 ];
