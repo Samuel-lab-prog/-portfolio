@@ -1,4 +1,4 @@
-import type { MyData } from "./myData";
+import type { MyData } from "@Data/portuguese/myData";
 
 export const myDataEn: MyData = {
 	name: "Samuel Gomes Monni",
@@ -20,7 +20,7 @@ export const myDataEn: MyData = {
 		{ label: "Process", href: "#processo" },
 		{ label: "Experience", href: "#experiencia" },
 		{ label: "Skills", href: "#habilidades" },
-		{ label: "Resume", href: "/curriculo-en" },
+		{ label: "Resume", href: "/resume-en" },
 		{ label: "Contact", href: "#contato" },
 	],
 	skills: [

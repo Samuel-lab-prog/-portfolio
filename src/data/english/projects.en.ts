@@ -1,4 +1,4 @@
-import type { PortfolioProject } from "./projects";
+import type { PortfolioProject } from "@Data/portuguese/projects";
 
 export const projectsEn: PortfolioProject[] = [
 	{

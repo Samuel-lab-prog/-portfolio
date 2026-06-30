@@ -26,7 +26,7 @@ export type ResumeData = {
 	}[];
 };
 
-export const curriculoData: ResumeData = {
+export const resumeData: ResumeData = {
 	name: "Samuel Gomes Monni",
 	title: "Desenvolvedor Fullstack",
 	summary: [

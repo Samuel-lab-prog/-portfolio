@@ -1,7 +1,6 @@
 ---
 import HomePage from "../components/HomePage.astro";
-import { myData } from "../data/myData";
-import { projects } from "../data/projects";
+import { myData, projects } from "@Data";
 
 const featuredProjects = projects.filter((project) => project.isSpotlight);
 
@@ -52,7 +51,7 @@ const structuredData = [
 	data={myData}
 	projects={featuredProjects}
 	structuredData={structuredData}
-	resumeHref="/curriculo"
+	resumeHref="/resume"
 	copy={{
 		pageTitle: "samuel.dev",
 		pageDescription:

@@ -53,7 +53,7 @@ export const myData: MyData = {
 		{ label: "Processo", href: "#processo" },
 		{ label: "Experiência", href: "#experiencia" },
 		{ label: "Habilidades", href: "#habilidades" },
-		{ label: "Currículo", href: "/curriculo" },
+		{ label: "Currículo", href: "/resume" },
 		{ label: "Contato", href: "#contato" },
 	],
 	skills: [

@@ -1,6 +1,6 @@
-import type { ResumeData } from "./curriculo";
+import type { ResumeData } from "@Data/portuguese/resume";
 
-export const curriculoEnData: ResumeData = {
+export const resumeEnData: ResumeData = {
 	name: "Samuel Gomes Monni",
 	title: "Fullstack Developer",
 	summary: [

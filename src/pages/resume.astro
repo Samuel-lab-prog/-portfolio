@@ -1,10 +1,10 @@
 ---
 import ResumePage from "../components/ResumePage.astro";
-import { curriculoData } from "../data/curriculo";
+import { resumeData } from "@Data";
 import "../styles/resume.css";
 
 const baseUrl = Astro.site ?? new URL("https://samuel.dev");
-const pageUrl = new URL("/curriculo", baseUrl).toString();
+const pageUrl = new URL("/resume", baseUrl).toString();
 
 const uiCopy = {
 	pageTitle: "Currículo | Samuel Gomes Monni",
@@ -33,8 +33,8 @@ const documentCopy = {
 const structuredData = {
 	"@context": "https://schema.org",
 	"@type": "Person",
-	name: curriculoData.name,
-	jobTitle: curriculoData.title,
+	name: resumeData.name,
+	jobTitle: resumeData.title,
 	inLanguage: "pt",
 	url: pageUrl,
 	email: "mailto:samuel.gomes.5762@gmail.com",
@@ -48,15 +48,15 @@ const structuredData = {
 
 <ResumePage
 	lang="pt"
-	ptPath="/curriculo"
-	enPath="/curriculo-en"
-	canonicalPath="/curriculo"
-	alternateHref="/curriculo-en"
+	ptPath="/resume"
+	enPath="/resume-en"
+	canonicalPath="/resume"
+	alternateHref="/resume-en"
 	htmlLang="pt-BR"
 	alternateHreflang="en"
 	ogLocale="pt_BR"
 	structuredData={structuredData}
-	data={curriculoData}
+	data={resumeData}
 	documentCopy={documentCopy}
 	uiCopy={uiCopy}
 />
