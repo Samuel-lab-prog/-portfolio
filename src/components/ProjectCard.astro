@@ -23,7 +23,7 @@ type Props = {
 const { project, copy } = Astro.props as Props;
 ---
 
-<article data-categories={project.categories.join(",")}>
+<article data-categories={project.categories.join(",")} class:list={{ "is-spotlight": project.isSpotlight }}>
 	<h3>{project.name}</h3>
 	<div class="project-availability">
 		<span class="availability-badge">

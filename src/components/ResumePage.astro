@@ -87,7 +87,7 @@ const { lang, ptPath, enPath, canonicalPath, alternateHref, htmlLang, alternateH
 	</main>
 </BaseLayout>
 
-<script define:vars={{ lang, ptPath, enPath }}>
+<script define:vars={{ ptPath, enPath }}>
 	const requestedLang = new URLSearchParams(window.location.search).get("lang");
 	const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
 	const targetPath =

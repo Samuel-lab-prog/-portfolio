@@ -5,9 +5,10 @@ export const projectsEn: PortfolioProject[] = [
 		id: "hellopoetry-fullstack",
 		name: "HelloPoetry",
 		description:
-			"Complete platform for poets to publish, interact, and grow as a community, with a focus on a smooth frontend experience and a robust backend architecture to support continuous product evolution.",
+			"A publishing platform for poets with authentication, comments, likes, and moderation, designed to evolve safely while keeping the codebase testable from frontend to backend.",
 		categories: ["destaque", "fullstack"],
-		keywords: ["429 tests", "50k lines", "DDD", "CQRS"],
+		keywords: ["429 tests", "Authentication", "Moderation", "DDD/CQRS"],
+		isSpotlight: true,
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryFrontend",
 		isAvailable: false,
@@ -111,7 +112,7 @@ export const projectsEn: PortfolioProject[] = [
 		id: "hellopoetry-backend",
 		name: "helloPoetryBackend",
 		description:
-			"API designed to scale business rules safely, separating responsibilities with DDD/CQRS and reducing regressions through automated architecture validation.",
+			"API for publishing, moderating, and interacting with poems, with clear responsibility boundaries, DDD/CQRS, and automated architecture validation to scale safely.",
 		categories: ["backend"],
 		keywords: ["DDD", "CQRS", "Prisma", "Bun"],
 		visitUrl: "https://hellopoetrybackend.onrender.com/api/v1/docs",

@@ -4,7 +4,13 @@ export const myDataEn: MyData = {
 	name: "Samuel Gomes Monni",
 	heroEyebrow: "Portfolio",
 	heroDescription:
-		"Software developer and IT technician focused on architecture, fullstack web, and code quality.",
+		"Full Stack developer focused on TypeScript, React, and Node.js, with experience in layered architecture, DDD, automated tests, and shipping complete applications from frontend to backend.",
+	heroProofs: [
+		"TypeScript, React, and Node.js",
+		"DDD, CQRS, and automated tests",
+		"End-to-end delivery from frontend to backend",
+		"Real projects with active deployments",
+	],
 	navItems: [
 		{ label: "Projects", href: "#projetos" },
 		{ label: "Experience", href: "#experiencia" },

@@ -4,6 +4,7 @@ type Props = {
 	eyebrow: string;
 	name: string;
 	description: string;
+	proofs: string[];
 	actions: {
 		projectsLabel: string;
 		experienceLabel: string;
@@ -12,13 +13,16 @@ type Props = {
 	};
 };
 
-const { eyebrow, name, description, actions } = Astro.props as Props;
+const { eyebrow, name, description, proofs, actions } = Astro.props as Props;
 ---
 
 <section class="hero">
 	<p class="eyebrow">{eyebrow}</p>
 	<h1>{name}</h1>
 	<p>{description}</p>
+	<ul class="hero-proofs" aria-label="Destaques profissionais">
+		{proofs.map((proof) => <li>{proof}</li>)}
+	</ul>
 	<div class="actions">
 		<a href="#projetos"><span aria-hidden="true"><Icon name="rocket" /></span> {actions.projectsLabel}</a>
 		<a href="#experiencia" class="ghost"><span aria-hidden="true"><Icon name="briefcase" /></span> {actions.experienceLabel}</a>

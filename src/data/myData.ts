@@ -18,6 +18,7 @@ export type MyData = {
 	name: string;
 	heroEyebrow: string;
 	heroDescription: string;
+	heroProofs: string[];
 	navItems: NavItem[];
 	skills: string[];
 	experience: ExperienceItem[];
@@ -35,7 +36,13 @@ export const myData: MyData = {
 	name: "Samuel Gomes Monni",
 	heroEyebrow: "Portfólio",
 	heroDescription:
-		"Desenvolvedor de software e técnico em informática, com foco em arquitetura, fullstack web e qualidade de código.",
+		"Desenvolvedor Full Stack focado em TypeScript, React e Node.js, com experiência em arquitetura em camadas, DDD, testes automatizados e entrega de aplicações completas do frontend ao backend.",
+	heroProofs: [
+		"TypeScript, React e Node.js",
+		"DDD, CQRS e testes automatizados",
+		"Aplicações completas do frontend ao backend",
+		"Projetos reais com deploy ativo",
+	],
 	navItems: [
 		{ label: "Projetos", href: "#projetos" },
 		{ label: "Experiência", href: "#experiencia" },
