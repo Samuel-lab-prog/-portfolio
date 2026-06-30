@@ -1,7 +1,7 @@
 ---
-import ResumePage from "../components/ResumePage.astro";
+import "./styles.css";
+import ResumePage from "../../components/ResumePage.astro";
 import { resumeEnData } from "@Data";
-import "../styles/resume.css";
 
 const baseUrl = Astro.site ?? new URL("https://samuel.dev");
 const pageUrl = new URL("/resume-en", baseUrl).toString();
