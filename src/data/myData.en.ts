@@ -4,15 +4,20 @@ export const myDataEn: MyData = {
 	name: "Samuel Gomes Monni",
 	heroEyebrow: "Portfolio",
 	heroDescription:
-		"Full Stack developer focused on TypeScript, React, and Node.js, with experience in layered architecture, DDD, automated tests, and shipping complete applications from frontend to backend.",
-	heroProofs: [
-		"TypeScript, React, and Node.js",
-		"DDD, CQRS, and automated tests",
-		"End-to-end delivery from frontend to backend",
-		"Real projects with active deployments",
+		"Full Stack developer focused on TypeScript, React, Node.js, and Docker, with experience in layered architecture, DDD, automated tests, and shipping complete applications from frontend to backend.",
+	technologyHighlights: [
+		"React",
+		"TypeScript",
+		"Node.js",
+		"PostgreSQL",
+		"Docker",
+		"Prisma",
+		"GitHub Actions",
 	],
+	processSteps: ["Planning", "Architecture", "Tests", "CI", "Deploy"],
 	navItems: [
 		{ label: "Projects", href: "#projetos" },
+		{ label: "Process", href: "#processo" },
 		{ label: "Experience", href: "#experiencia" },
 		{ label: "Skills", href: "#habilidades" },
 		{ label: "Resume", href: "/curriculo-en" },
@@ -21,6 +26,7 @@ export const myDataEn: MyData = {
 	skills: [
 		"Multiple-time medalist in mathematics competitions, with experience solving complex problems and applying logical reasoning",
 		"Software architecture focused on clarity, evolution, and low coupling",
+		"Using Docker to standardize environments, streamline deploys, and reduce friction between development and production",
 		"Domain modeling and business rules designed to support product growth",
 		"Technical decisions guided by context, cost, and long-term impact",
 		"Clear communication and collaboration with teams and stakeholders",
@@ -44,10 +50,10 @@ export const myDataEn: MyData = {
 		},
 	],
 	technologies: [
-		"Front-end: React, HTML, CSS, JavaScript, TypeScript, Sass/SCSS, TailwindCSS, Next.js, Vite",
-		"Back-end: Node.js, Express, Elysia, Bun, Java, JavaScript, TypeScript",
-		"Databases: SQL, PostgreSQL, Prisma",
-		"Tools: Git, GitHub, Figma, Vite, UX, Office, Excel, Canva, PowerPoint",
+		"Front-end: React, TypeScript, JavaScript, HTML, CSS, Sass/SCSS, TailwindCSS, Next.js, Vite",
+		"Back-end: Node.js, Express, Elysia, Bun, Java",
+		"Databases and infra: SQL, PostgreSQL, Prisma, Docker",
+		"Tools: Git, GitHub, GitHub Actions, Figma",
 	],
 	languages: [
 		"Portuguese: fluent (native language)",

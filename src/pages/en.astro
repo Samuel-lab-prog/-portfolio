@@ -3,6 +3,8 @@ import HomePage from "../components/HomePage.astro";
 import { myDataEn } from "../data/myData.en";
 import { projectsEn } from "../data/projects.en";
 
+const featuredProjects = projectsEn.filter((project) => project.isSpotlight);
+
 const baseUrl = Astro.site ?? new URL("https://samuel.dev");
 const pageUrl = new URL("/en", baseUrl).toString();
 
@@ -28,7 +30,7 @@ const structuredData = [
 		"@context": "https://schema.org",
 		"@type": "ItemList",
 		name: "Portfolio projects",
-		itemListElement: projectsEn.map((project, index) => ({
+		itemListElement: featuredProjects.map((project, index) => ({
 			"@type": "ListItem",
 			position: index + 1,
 			name: project.name,
@@ -48,7 +50,7 @@ const structuredData = [
 	brand="samuel.dev"
 	brandHref="/en"
 	data={myDataEn}
-	projects={projectsEn}
+	projects={featuredProjects}
 	structuredData={structuredData}
 	resumeHref="/curriculo-en"
 	copy={{
@@ -70,13 +72,6 @@ const structuredData = [
 		},
 		projects: {
 			title: "Projects with impact",
-			filtersLabel: "Filter projects",
-			filters: {
-				destaque: "Featured",
-				frontend: "Frontend",
-				backend: "Backend",
-				fullstack: "Fullstack",
-			},
 			card: {
 				availableLabel: "Available",
 				unavailableLabel: "Unavailable",
@@ -95,6 +90,7 @@ const structuredData = [
 		experienceTitle: "Experience",
 		skillsTitle: "Skills",
 		technologiesTitle: "Technologies I use daily",
+		workflowTitle: "How I develop software",
 		languagesTitle: "Languages",
 		contact: {
 			title: "Contact",

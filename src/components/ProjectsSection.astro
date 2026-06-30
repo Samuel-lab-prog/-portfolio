@@ -7,13 +7,6 @@ type Props = {
 	projects: PortfolioProject[];
 	copy: {
 		title: string;
-		filtersLabel: string;
-		filters: {
-			destaque: string;
-			frontend: string;
-			backend: string;
-			fullstack: string;
-		};
 		card: {
 			availableLabel: string;
 			unavailableLabel: string;
@@ -36,12 +29,6 @@ const { projects, copy } = Astro.props as Props;
 
 <section id="projetos" class="block">
 	<SectionTitle label={copy.title} icon="beaker" />
-	<div class="project-filters" role="tablist" aria-label={copy.filtersLabel}>
-		<button class="filter is-active" data-filter="destaque" type="button">{copy.filters.destaque}</button>
-		<button class="filter" data-filter="frontend" type="button">{copy.filters.frontend}</button>
-		<button class="filter" data-filter="backend" type="button">{copy.filters.backend}</button>
-		<button class="filter" data-filter="fullstack" type="button">{copy.filters.fullstack}</button>
-	</div>
 	<div class="grid" id="projects-grid">
 		{projects.map((project) => <ProjectCard project={project} copy={copy.card} />)}
 	</div>

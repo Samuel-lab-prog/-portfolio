@@ -27,13 +27,6 @@ type Copy = {
 	};
 	projects: {
 		title: string;
-		filtersLabel: string;
-		filters: {
-			destaque: string;
-			frontend: string;
-			backend: string;
-			fullstack: string;
-		};
 		card: {
 			availableLabel: string;
 			unavailableLabel: string;
@@ -52,6 +45,7 @@ type Copy = {
 	experienceTitle: string;
 	skillsTitle: string;
 	technologiesTitle: string;
+	workflowTitle: string;
 	languagesTitle: string;
 	contact: {
 		title: string;
@@ -126,7 +120,6 @@ const { lang, ptPath, enPath, canonicalPath, alternateHref, brand, brandHref, da
 			eyebrow={data.heroEyebrow}
 			name={data.name}
 			description={data.heroDescription}
-			proofs={data.heroProofs}
 			actions={{
 				projectsLabel: copy.hero.projectsLabel,
 				experienceLabel: copy.hero.experienceLabel,
@@ -136,6 +129,18 @@ const { lang, ptPath, enPath, canonicalPath, alternateHref, brand, brandHref, da
 		/>
 
 		<ProjectsSection projects={projects} copy={copy.projects} />
+
+		<section id="processo" class="block">
+			<SectionTitle label={copy.workflowTitle} icon="beaker" />
+			<ol class="workflow-steps">
+				{data.processSteps.map((step, index) => (
+					<li class="workflow-step">
+						<span class="workflow-step-index">{index + 1}</span>
+						<span>{step}</span>
+					</li>
+				))}
+			</ol>
+		</section>
 
 		<section id="experiencia" class="block">
 			<SectionTitle label={copy.experienceTitle} icon="briefcase" />
@@ -242,28 +247,6 @@ const { lang, ptPath, enPath, canonicalPath, alternateHref, brand, brandHref, da
 		});
 	}
 
-	const filters = Array.from(document.querySelectorAll(".filter"));
-	const cards = Array.from(document.querySelectorAll("#projects-grid article"));
-
-	function applyFilter(filter) {
-		for (const card of cards) {
-			const categories = (card.dataset.categories ?? "")
-				.split(",")
-				.map((value) => value.trim())
-				.filter(Boolean);
-			const shouldShow = categories.includes(filter);
-			card.style.display = shouldShow ? "block" : "none";
-		}
-	}
-
-	for (const button of filters) {
-		button.addEventListener("click", () => {
-			for (const current of filters) current.classList.remove("is-active");
-			button.classList.add("is-active");
-			applyFilter(button.dataset.filter ?? "destaque");
-		});
-	}
-
 	const carousels = Array.from(document.querySelectorAll(".carousel"));
 	for (const carousel of carousels) {
 		const images = Array.from(carousel.querySelectorAll(".carousel-image"));
@@ -288,8 +271,6 @@ const { lang, ptPath, enPath, canonicalPath, alternateHref, brand, brandHref, da
 			render(nextIndex);
 		});
 	}
-
-	applyFilter("destaque");
 
 	const lightbox = document.createElement("div");
 	lightbox.className = "lightbox";

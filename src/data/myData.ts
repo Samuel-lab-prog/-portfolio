@@ -18,7 +18,8 @@ export type MyData = {
 	name: string;
 	heroEyebrow: string;
 	heroDescription: string;
-	heroProofs: string[];
+	technologyHighlights: string[];
+	processSteps: string[];
 	navItems: NavItem[];
 	skills: string[];
 	experience: ExperienceItem[];
@@ -36,15 +37,20 @@ export const myData: MyData = {
 	name: "Samuel Gomes Monni",
 	heroEyebrow: "Portfólio",
 	heroDescription:
-		"Desenvolvedor Full Stack focado em TypeScript, React e Node.js, com experiência em arquitetura em camadas, DDD, testes automatizados e entrega de aplicações completas do frontend ao backend.",
-	heroProofs: [
-		"TypeScript, React e Node.js",
-		"DDD, CQRS e testes automatizados",
-		"Aplicações completas do frontend ao backend",
-		"Projetos reais com deploy ativo",
+		"Desenvolvedor Full Stack focado em TypeScript, React, Node.js e Docker, com experiência em arquitetura em camadas, DDD, testes automatizados e entrega de aplicações completas do frontend ao backend.",
+	technologyHighlights: [
+		"React",
+		"TypeScript",
+		"Node.js",
+		"PostgreSQL",
+		"Docker",
+		"Prisma",
+		"GitHub Actions",
 	],
+	processSteps: ["Planejamento", "Arquitetura", "Testes", "CI", "Deploy"],
 	navItems: [
 		{ label: "Projetos", href: "#projetos" },
+		{ label: "Processo", href: "#processo" },
 		{ label: "Experiência", href: "#experiencia" },
 		{ label: "Habilidades", href: "#habilidades" },
 		{ label: "Currículo", href: "/curriculo" },
@@ -53,6 +59,7 @@ export const myData: MyData = {
 	skills: [
 		"Multimedalhista em competições de matemática, com experiência em resolução de problemas complexos e raciocínio lógico",
 		"Definição de arquitetura de software com foco em clareza, evolução e baixo acoplamento",
+		"Uso de Docker para padronizar ambientes, facilitar deploy e reduzir atrito entre desenvolvimento e produção",
 		"Modelagem de domínio e regras de negócio para suportar crescimento do produto",
 		"Tomada de decisão técnica orientada a contexto, custo e impacto no longo prazo",
 		"Comunicação clara e colaboração com time e stakeholders",
@@ -76,10 +83,10 @@ export const myData: MyData = {
 		},
 	],
 	technologies: [
-		"Front-end: React, HTML, CSS, JavaScript, TypeScript, Sass/SCSS, TailwindCSS, Next.js, Vite",
-		"Back-end: Node.js, Express, Elysia, Bun, Java, JavaScript, TypeScript",
-		"Banco de dados: SQL, PostgreSQL, Prisma",
-		"Ferramentas: Git, GitHub, Figma, Vite, UX, Office, Excel, Canva, PowerPoint",
+		"Front-end: React, TypeScript, JavaScript, HTML, CSS, Sass/SCSS, TailwindCSS, Next.js, Vite",
+		"Back-end: Node.js, Express, Elysia, Bun, Java",
+		"Banco de dados e infra: SQL, PostgreSQL, Prisma, Docker",
+		"Ferramentas: Git, GitHub, GitHub Actions, Figma",
 	],
 	languages: [
 		"Português: fluente (língua materna)",

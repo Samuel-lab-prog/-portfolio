@@ -18,13 +18,13 @@ export const projects: PortfolioProject[] = [
 		id: "hellopoetry-fullstack",
 		name: "HelloPoetry",
 		description:
-			"Plataforma de publicação para poetas com autenticação, comentários, curtidas e moderação, pensada para evoluir com segurança e manter a base testável do frontend ao backend.",
+			"Plataforma de publicação para poetas com autenticação, comentários, curtidas, moderação e entrega em Docker, pensada para evoluir com segurança e manter a base testável do frontend ao backend.",
 		categories: ["destaque", "fullstack"],
-		keywords: ["429 testes", "Autenticação", "Moderação", "DDD/CQRS"],
+		keywords: ["Fullstack", "CI/CD", "429 testes", "DDD/CQRS", "Docker", "DDD"],
 		isSpotlight: true,
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryFrontend",
-		isAvailable: false,
+		isAvailable: true,
 		prints: [
 			{
 				src: "/projects/hellopoetry/hellopoetry-create-poem.png",
@@ -178,9 +178,9 @@ export const projects: PortfolioProject[] = [
 		id: "blog-fullstack",
 		name: "blog",
 		description:
-			"Projeto completo de blog com experiência de leitura no frontend e estrutura de API no backend, pensado para facilitar publicação de conteúdo, manutenção e evolução contínua.",
+			"Projeto completo de blog com experiência de leitura no frontend, estrutura de API no backend e deploy em Docker, pensado para facilitar publicação de conteúdo, manutenção e evolução contínua.",
 		categories: ["destaque", "fullstack"],
-		keywords: ["Fullstack", "React", "Node.js", "API REST"],
+		keywords: ["Frontend", "Backend", "GitHub", "React", "Node.js"],
 		visitUrl: "https://samuelsblog.xyz/",
 		githubUrl: "https://github.com/Samuel-lab-prog/blogFrontend",
 		isAvailable: false,
