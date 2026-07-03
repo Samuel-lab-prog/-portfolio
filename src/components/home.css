@@ -8,6 +8,10 @@
 	--border: #30363d;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 .icon {
 	width: 1em;
 	height: 1em;

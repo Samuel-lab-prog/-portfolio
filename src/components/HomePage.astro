@@ -178,35 +178,6 @@ const { lang, ptPath, enPath, canonicalPath, alternateHref, brand, brandHref, da
 </BaseLayout>
 
 <script define:vars={{ copy }}>
-	function smoothScrollToHash(hash) {
-		const target = document.querySelector(hash);
-		const navbar = document.querySelector(".navbar");
-		if (!target) return;
-
-		const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
-		const targetTop = target.getBoundingClientRect().top + window.scrollY;
-		const destination = Math.max(0, targetTop - navbarHeight - 18);
-
-		const start = window.scrollY;
-		const distance = destination - start;
-		const duration = 620;
-		const startTime = performance.now();
-
-		function easeInOutCubic(t) {
-			return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-		}
-
-		function step(currentTime) {
-			const elapsed = currentTime - startTime;
-			const progress = Math.min(1, elapsed / duration);
-			const eased = easeInOutCubic(progress);
-			window.scrollTo(0, start + distance * eased);
-			if (progress < 1) requestAnimationFrame(step);
-		}
-
-		requestAnimationFrame(step);
-	}
-
 	const navbar = document.querySelector("[data-navbar]");
 	const navbarToggle = document.querySelector("[data-navbar-toggle]");
 	const navbarLinks = Array.from(document.querySelectorAll("[data-navbar-links] a"));
@@ -220,17 +191,6 @@ const { lang, ptPath, enPath, canonicalPath, alternateHref, brand, brandHref, da
 		link.addEventListener("click", () => {
 			navbar?.classList.remove("is-open");
 			navbarToggle?.setAttribute("aria-expanded", "false");
-		});
-	}
-
-	const hashLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
-	for (const link of hashLinks) {
-		link.addEventListener("click", (event) => {
-			const href = link.getAttribute("href");
-			if (!href || href === "#") return;
-			event.preventDefault();
-			smoothScrollToHash(href);
-			history.replaceState(null, "", href);
 		});
 	}
 
