@@ -19,7 +19,6 @@ export type MyData = {
 	heroEyebrow: string;
 	heroDescription: string;
 	technologyHighlights: string[];
-	processSteps: string[];
 	navItems: NavItem[];
 	skills: string[];
 	experience: ExperienceItem[];
@@ -47,10 +46,8 @@ export const myData: MyData = {
 		"Prisma",
 		"GitHub Actions",
 	],
-	processSteps: ["Planejamento", "Arquitetura", "Testes", "CI", "Deploy"],
 	navItems: [
 		{ label: "Projetos", href: "#projetos" },
-		{ label: "Processo", href: "#processo" },
 		{ label: "Experiência", href: "#experiencia" },
 		{ label: "Habilidades", href: "#habilidades" },
 		{ label: "Currículo", href: "/resume" },

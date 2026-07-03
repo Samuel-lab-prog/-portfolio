@@ -14,10 +14,8 @@ export const myDataEn: MyData = {
 		"Prisma",
 		"GitHub Actions",
 	],
-	processSteps: ["Planning", "Architecture", "Tests", "CI", "Deploy"],
 	navItems: [
 		{ label: "Projects", href: "#projetos" },
-		{ label: "Process", href: "#processo" },
 		{ label: "Experience", href: "#experiencia" },
 		{ label: "Skills", href: "#habilidades" },
 		{ label: "Resume", href: "/resume-en" },

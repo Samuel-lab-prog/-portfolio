@@ -11,7 +11,7 @@ export const projectsEn: PortfolioProject[] = [
 		isSpotlight: true,
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryFrontend",
-		isAvailable: true,
+		isAvailable: false,
 		prints: [
 			{
 				src: "/projects/hellopoetry/hellopoetry-create-poem.png",
@@ -64,7 +64,7 @@ export const projectsEn: PortfolioProject[] = [
 		keywords: ["React 19", "TypeScript", "Vite", "Chakra UI"],
 		visitUrl: "https://hello-poetry-frontend.vercel.app",
 		githubUrl: "https://github.com/Samuel-lab-prog/helloPoetryFrontend",
-		isAvailable: true,
+		isAvailable: false,
 		prints: [
 			{
 				src: "/projects/hellopoetry/hellopoetry-create-poem.png",

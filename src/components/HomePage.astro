@@ -45,7 +45,6 @@ type Copy = {
 	experienceTitle: string;
 	skillsTitle: string;
 	technologiesTitle: string;
-	workflowTitle: string;
 	languagesTitle: string;
 	contact: {
 		title: string;
@@ -129,18 +128,6 @@ const { lang, ptPath, enPath, canonicalPath, alternateHref, brand, brandHref, da
 		/>
 
 		<ProjectsSection projects={projects} copy={copy.projects} />
-
-		<section id="processo" class="block">
-			<SectionTitle label={copy.workflowTitle} icon="beaker" />
-			<ol class="workflow-steps">
-				{data.processSteps.map((step, index) => (
-					<li class="workflow-step">
-						<span class="workflow-step-index">{index + 1}</span>
-						<span>{step}</span>
-					</li>
-				))}
-			</ol>
-		</section>
 
 		<section id="experiencia" class="block">
 			<SectionTitle label={copy.experienceTitle} icon="briefcase" />
