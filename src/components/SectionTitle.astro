@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+
 type Props = {
 	label: string;
 	icon?: "mail" | "beaker" | "briefcase" | "wrench" | "cpu" | "globe";
@@ -8,7 +9,7 @@ type Props = {
 const { label, icon } = Astro.props as Props;
 ---
 
-<h2 class="section-title">
-	{icon && <Icon name={icon} class="icon section-icon" />}
+<h2 class="mb-4 flex items-center gap-2 text-[clamp(1.25rem,1.8vw,1.6rem)] font-semibold tracking-tight text-cyan-300">
+	{icon && <Icon name={icon} class="h-5 w-5" />}
 	{label}
 </h2>

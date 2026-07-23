@@ -1,4 +1,6 @@
-﻿---
+---
+import "../styles/global.css";
+
 type Props = {
 	title: string;
 	description?: string;
@@ -70,7 +72,7 @@ const jsonLd = structuredData
 		{jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="min-h-screen">
 		<slot />
 	</body>
 </html>

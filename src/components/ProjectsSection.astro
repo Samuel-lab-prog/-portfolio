@@ -28,9 +28,9 @@ type Props = {
 const { projects, copy } = Astro.props as Props;
 ---
 
-<section id="projetos" class="block">
+<section id="projetos" class="mt-14 rounded-2xl border border-slate-700 bg-slate-900/90 p-6 shadow-2xl shadow-slate-950/20">
 	<SectionTitle label={copy.title} icon="beaker" />
-	<div class="grid" id="projects-grid">
+	<div id="projects-grid" class="grid gap-4 md:grid-cols-2">
 		{projects.map((project) => <ProjectCard project={project} copy={copy.card} />)}
 	</div>
 </section>
