@@ -1,18 +1,18 @@
-﻿# samuel.dev
+# samuel.dev
 
-Portfólio pessoal desenvolvido com Astro, com foco em performance, SEO técnico e apresentação de projetos.
+Personal portfolio built with Astro, focused on performance, technical SEO, and project presentation.
 
-## Visão geral
+## Overview
 
-Este projeto reúne:
+This project includes:
 
-- seção de projetos com filtros por categoria
-- carrossel de imagens com lightbox
-- status de disponibilidade por projeto
-- área de experiência, habilidades, tecnologias e contato
-- SEO configurado com metadados, Open Graph, JSON-LD, sitemap e robots
+- project section with category filters
+- image carousel with lightbox
+- availability status for each project
+- experience, skills, technologies, and contact section
+- SEO configured with metadata, Open Graph, JSON-LD, sitemap, and robots
 
-## Tecnologias
+## Technologies
 
 - Astro
 - TypeScript
@@ -20,52 +20,52 @@ Este projeto reúne:
 - ESLint
 - Prettier
 
-## Requisitos
+## Requirements
 
 - Node.js 18+
 - npm 9+
 
-## Como rodar localmente
+## Run Locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Aplicação local:
+Local application:
 
 - [http://localhost:4321](http://localhost:4321)
 
-## Scripts disponíveis
+## Available Scripts
 
-- `npm run dev`: inicia ambiente de desenvolvimento
-- `npm run build`: gera build de produção
-- `npm run preview`: inicia preview da build local
-- `npm run lint`: executa lint
-- `npm run format`: valida formatação com Prettier
-- `npm run format:fix`: corrige formatação automaticamente
-- `npm run typecheck`: executa verificação de tipos com `astro check`
-- `npm run check`: executa lint, format, typecheck e build
+- `npm run dev`: starts the development environment
+- `npm run build`: generates a production build
+- `npm run preview`: starts a local build preview
+- `npm run lint`: runs linting
+- `npm run format`: checks formatting with Prettier
+- `npm run format:fix`: automatically fixes formatting
+- `npm run typecheck`: runs type checking with `astro check`
+- `npm run check`: runs lint, format, typecheck, and build
 
-## Estrutura principal
+## Main Structure
 
 ```text
 src/
-  components/    componentes de UI
-  data/          conteúdo dos projetos e dados pessoais
-  layouts/       layout base e metatags
-  pages/         páginas Astro
-  styles/        estilos globais
+  components/    UI components
+  data/          project content and personal data
+  layouts/       base layout and meta tags
+  pages/         Astro pages
+  styles/        global styles
 public/
-  projects/      imagens usadas nos cards
+  projects/      images used in cards
 ```
 
-## Deploy
+## Deployment
 
-O projeto está preparado para build estática:
+The project is ready for static build output:
 
 ```bash
 npm run build
 ```
 
-Os arquivos finais são gerados em `dist/`.
+The final files are generated in `dist/`.
