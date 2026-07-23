@@ -17,67 +17,78 @@ type Props = {
 		expandedImageLabel: string;
 		availableProjectLabel: string;
 		unavailableProjectLabel: string;
+		collapsedHintLabel: string;
 	};
 };
 
 const { project, copy } = Astro.props as Props;
 ---
 
-<article data-categories={project.categories.join(",")} class:list={{ "is-spotlight": project.isSpotlight }}>
-	<h3>{project.name}</h3>
-	<div class="project-availability">
-		<span class="availability-badge">
+<details class="project-card">
+	<summary class="project-summary">
+		<div class="project-summary-copy">
+			<h3>{project.name}</h3>
+			<p>{copy.collapsedHintLabel}</p>
+		</div>
+		<span class="project-summary-state">
 			<span
 				class={`availability-dot ${project.isAvailable ? "is-available" : "is-unavailable"}`}
 				aria-label={project.isAvailable ? copy.availableProjectLabel : copy.unavailableProjectLabel}
-				tabindex="0"
 			></span>
-			<svg class="availability-info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-				<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
-				<path d="M12 10.2v5.2M12 7.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-			</svg>
 			<span class="availability-text">{project.isAvailable ? copy.availableLabel : copy.unavailableLabel}</span>
-			<span class="availability-message">
-				{project.isAvailable
-					? copy.availableMessage
-					: copy.unavailableMessage}
-			</span>
 		</span>
-	</div>
-	<p>{project.description}</p>
-	<div class="keyword-list">
-		{project.keywords.map((keyword) => <span class="keyword-pill">{keyword}</span>)}
-	</div>
-	<div class="project-links">
-		{
-			project.isAvailable ? (
-				<a href={project.visitUrl} target="_blank" rel="noreferrer">
-					<Icon name="external" /> {copy.visitProjectLabel}
-				</a>
-			) : (
-				<span class="project-link-disabled" aria-disabled="true" tabindex="0">
-					<Icon name="external" /> {copy.unavailableProjectLabel}
+	</summary>
+	<div class="project-body">
+		<div class="project-availability">
+			<span class="availability-badge">
+				<span class="availability-info-icon-wrap" aria-hidden="true">
+					<svg class="availability-info-icon" viewBox="0 0 24 24" fill="none">
+						<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle>
+						<path d="M12 10.2v5.2M12 7.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+					</svg>
 				</span>
-			)
-		}
-		<a href={project.githubUrl} target="_blank" rel="noreferrer"><Icon name="github" /> {copy.viewGithubLabel}</a>
-	</div>
-	<div id={`gallery-${project.id}`} class="carousel" data-index="0">
-		<button class="carousel-control prev" type="button" aria-label={copy.prevImageLabel}>
-			&lt;
-		</button>
-		<div class="carousel-stage">
-			{project.prints.map((print, index) => (
-				<img
-					src={print.src}
-					alt={print.alt}
-					class={`carousel-image ${index === 0 ? "is-active" : ""}`}
-					loading="lazy"
-				/>
-			))}
+				<span class="availability-message">
+					{project.isAvailable
+						? copy.availableMessage
+						: copy.unavailableMessage}
+				</span>
+			</span>
 		</div>
-		<button class="carousel-control next" type="button" aria-label={copy.nextImageLabel}>
-			&gt;
-		</button>
+		<p>{project.description}</p>
+		<div class="keyword-list">
+			{project.keywords.map((keyword) => <span class="keyword-pill">{keyword}</span>)}
+		</div>
+		<div class="project-links">
+			{
+				project.isAvailable ? (
+					<a href={project.visitUrl} target="_blank" rel="noreferrer">
+						<Icon name="external" /> {copy.visitProjectLabel}
+					</a>
+				) : (
+					<span class="project-link-disabled" aria-disabled="true" tabindex="0">
+						<Icon name="external" /> {copy.unavailableProjectLabel}
+					</span>
+				)
+			}
+			<a href={project.githubUrl} target="_blank" rel="noreferrer"><Icon name="github" /> {copy.viewGithubLabel}</a>
+		</div>
+		<div id={`gallery-${project.id}`} class="carousel" data-index="0">
+			<button class="carousel-control prev" type="button" aria-label={copy.prevImageLabel}>
+				&lt;
+			</button>
+			<div class="carousel-stage">
+				{project.prints.map((print, index) => (
+					<img
+						src={print.src}
+						alt={print.alt}
+						class={`carousel-image ${index === 0 ? "is-active" : ""}`}
+						loading="lazy"
+					/>
+				))}
+			</div>
+			<button class="carousel-control next" type="button" aria-label={copy.nextImageLabel}>
+				&gt;
+			</button>
+		</div>
 	</div>
-</article>
+</details>

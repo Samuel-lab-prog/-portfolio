@@ -235,38 +235,78 @@ html {
 	gap: 16px;
 }
 
-.grid article {
+.project-card {
 	border: 1px solid var(--border);
 	border-radius: 12px;
-	padding: 14px;
 	background: #0f141b;
+	overflow: hidden;
 	transition:
 		transform 0.2s ease,
 		border-color 0.2s ease,
 		box-shadow 0.2s ease;
 }
 
-.grid article.is-spotlight {
-	grid-column: 1 / -1;
-	padding: 18px;
-	border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
-	background:
-		radial-gradient(circle at top right, rgba(34, 211, 238, 0.16), transparent 42%),
-		linear-gradient(180deg, rgba(15, 23, 34, 0.98), rgba(11, 17, 24, 0.98));
-}
-
-.grid article.is-spotlight h3 {
-	font-size: 1.35rem;
-}
-
-.grid article:hover {
+.project-card:hover {
 	transform: translateY(-3px);
 	border-color: #5a6876;
 	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
 }
 
+.project-card[open] {
+	border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+	background:
+		radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 42%),
+		linear-gradient(180deg, rgba(15, 23, 34, 0.98), rgba(11, 17, 24, 0.98));
+}
+
+.project-summary {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 14px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.project-summary::-webkit-details-marker {
+	display: none;
+}
+
+.project-summary-copy {
+	min-width: 0;
+}
+
+.project-summary-copy h3 {
+	margin: 0 0 6px;
+	font-size: 1.05rem;
+}
+
+.project-summary-copy p {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.86rem;
+	line-height: 1.4;
+}
+
+.project-summary-state {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+}
+
+.project-body {
+	padding: 0 14px 14px;
+}
+
+.project-card[open] .project-summary {
+	border-bottom: 1px solid var(--border);
+}
+
 .grid h3 {
-	margin: 0 0 8px;
+	margin: 0;
 }
 
 .project-availability {
@@ -345,6 +385,14 @@ html {
 
 	.project-link-disabled .availability-message {
 		width: 100%;
+	}
+
+	.project-summary {
+		padding: 12px;
+	}
+
+	.project-body {
+		padding: 0 12px 12px;
 	}
 }
 
@@ -817,8 +865,7 @@ li {
 		padding: 0;
 	}
 
-	.grid article {
-		padding: 12px;
+	.project-card {
 		border-radius: 10px;
 	}
 

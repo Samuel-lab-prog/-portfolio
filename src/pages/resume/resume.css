@@ -136,8 +136,8 @@
 .resume-document a:visited,
 .resume-document a:hover,
 .resume-document a:focus {
-	color: #60a5fa;
-	-webkit-text-fill-color: #60a5fa;
+	color: #6091fa;
+	-webkit-text-fill-color: #609efa;
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
 	text-underline-offset: 0.16em;
@@ -334,7 +334,7 @@
 .resume-entry-head a:visited,
 .resume-entry-head a:hover,
 .resume-entry-head a:focus {
-	color: #60a5fa;
+	color: #60a2f3;
 	-webkit-text-fill-color: #60a5fa;
 	text-decoration: underline;
 	text-decoration-thickness: 1px;

@@ -76,9 +76,25 @@ export const resumeEnData: ResumeData = {
 			value: "portfolio-pi-khaki-44.vercel.app",
 			href: "https://portfolio-pi-khaki-44.vercel.app/",
 		},
-		{ label: "E-mail", value: "samuel.gomes.5762@gmail.com" },
-		{ label: "Phone", value: "(51) 99166-9896" },
-		{ label: "GitHub", value: "github.com/Samuel-lab-prog" },
-		{ label: "Lattes", value: "lattes.cnpq.br/0187401279570368" },
+		{
+			label: "E-mail",
+			value: "samuel.gomes.5762@gmail.com",
+			href: "mailto:samuel.gomes.5762@gmail.com?subject=Contact%20via%20resume&body=Hello%2C%20Samuel!%20I%20found%20your%20resume%20and%20would%20like%20to%20talk.",
+		},
+		{
+			label: "Phone",
+			value: "(51) 99166-9896",
+			href: "https://wa.me/5551991669896?text=Hello%2C%20Samuel!%20I%20found%20your%20resume%20and%20would%20like%20to%20talk.",
+		},
+		{
+			label: "GitHub",
+			value: "github.com/Samuel-lab-prog",
+			href: "https://github.com/Samuel-lab-prog",
+		},
+		{
+			label: "Lattes",
+			value: "lattes.cnpq.br/0187401279570368",
+			href: "http://lattes.cnpq.br/0187401279570368",
+		},
 	],
 };
